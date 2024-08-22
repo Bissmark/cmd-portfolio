@@ -1,0 +1,40 @@
+.desktop-icon {
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 1px;
+}
+
+.select-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.select-icon:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+h1 {
+    color: white;
+    font-size: 0.4em;
+    margin: 0;
+}
+
+.desktop-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.icons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 2px;
+}

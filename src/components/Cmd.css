@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.cmd-box {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #9b9595;
+    margin: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+    overflow: auto;
+    max-height: 300px;
+    width: 500px;
+    height: 250px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.top-box {
+    background-color: rgb(66, 62, 62);
+}
+
+.top-box ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
+.top-box li {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    margin: 0;
+    font-size: small;
+    width: 25px;
+    height: 25px;
+}
+
+.minimize, .maximize {
+    margin-left: 15px;
+}
+
+.exit {
+    margin-left: 50px;
+}
+
+.exit:hover {
+    background-color: red;
+}
+.minimize:hover, .maximize:hover {
+    background-color: grey;
+}
+
+
+.inner-cmd-box {
+    padding: 4px;
+}
+
+.time-input {
+    display: inline;
+    margin-right: 10px;
+}
+
+input {
+    border: none;
+    background: black;
+    color: green;
+    font-family: monospace;
+    caret-color: white; /* Vertical flashing cursor color */
+    width: calc(100% - 20px); /* Adjust width to fit within the cmd-box padding */
+}
+
+input:focus {
+    outline: none;
+}
