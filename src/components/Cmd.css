@@ -78,7 +78,14 @@ input {
     caret-color: white; /* Vertical flashing cursor color */
     width: calc(100% - 20px); /* Adjust width to fit within the cmd-box padding */
 }
-
+d
 input:focus {
     outline: none;
+}
+
+.inline-commands {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    padding-left: 4px;
 }

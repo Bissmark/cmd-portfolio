@@ -5,7 +5,7 @@ import './Desktop.css';
 const DesktopIconNames = {
     recycleBin: 'Recycle Bin',
     myComputer: 'My Computer',
-    myDocuments: 'My Documents',
+    cmdPrompt: 'Powershell',
     myPictures: 'My Pictures',
 }
 
@@ -25,7 +25,7 @@ const Desktop = () => {
             <div className="icons-container">
                 <DesktopIcons name={DesktopIconNames.recycleBin} />
                 <DesktopIcons name={DesktopIconNames.myComputer} />
-                <DesktopIcons name={DesktopIconNames.myDocuments} />
+                <DesktopIcons name={DesktopIconNames.cmdPrompt} />
                 <DesktopIcons name={DesktopIconNames.myPictures} />
             </div>
             <Cmd />
