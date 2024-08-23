@@ -29,9 +29,17 @@ const Cmd = () => {
         }
     };
 
+    const _handleKeyPressCmdPrompt = (e) => {
+        // Clear the command history
+        if (e.ctrlKey && e.key === 'l') {
+            e.preventDefault();
+            setCmdHistory([]);
+        }
+    }
+
     return (
         <div className='container'>
-            <div className="cmd-box" onClick={_handleCmdClick}>
+            <div className="cmd-box" onClick={_handleCmdClick} onKeyDown={_handleKeyPressCmdPrompt}>
                 <div className='top-box'>
                     <ul>
                         <li className='minimize'>-</li>
