@@ -77,8 +77,9 @@ input {
     font-family: monospace;
     caret-color: white; /* Vertical flashing cursor color */
     width: calc(100% - 20px); /* Adjust width to fit within the cmd-box padding */
+    outline: none;
 }
-d
+
 input:focus {
     outline: none;
 }
