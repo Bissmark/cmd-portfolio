@@ -26,11 +26,13 @@ const Cmd = () => {
 
     const _handleKeyPress = (e) => {
         if (e.key === 'Enter') {
+            let output = '';
             if (commands[inputValue]) {
                 console.log(commands[inputValue]);
+                output = commands[inputValue];
             }
 
-            setCmdHistory([...cmdHistory, inputValue]);
+            setCmdHistory([...cmdHistory, { command: inputValue, output }]);
             setInputValue('');
             setHistoryIndex(-1);
         }
@@ -85,9 +87,12 @@ const Cmd = () => {
                 </div>
                 <div>
                 {cmdHistory.map((cmd, index) => (
-                    <div className='inline-commands' key={index}>
-                        <p className='time-input'>{new Date().toLocaleTimeString()}</p>
-                        <p style={{ color: 'green'}}>{cmd}</p>
+                    <div key={index}>
+                        <div className='inline-commands'>
+                            <p className='time-input'>{new Date().toLocaleTimeString()}</p>
+                            <p style={{ color: 'green'}}>{cmd.command}</p>
+                        </div>
+                            {cmd.output && <p style={{margin: '0', paddingLeft: '4px'}}>{cmd.output}</p>}
                     </div>
                 ))}
                 </div>

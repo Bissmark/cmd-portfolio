@@ -1,0 +1,26 @@
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    /* padding: 10px; */
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer .time-date {
+    font-size: 0.5em;
+    text-align: right;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+
+.time-date p {
+    margin: 0;
+    padding: 0;
+}

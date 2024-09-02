@@ -1,5 +1,6 @@
 import { FaRecycle } from "react-icons/fa";
 import Cmd from "./cmd";
+import Footer from "./Footer";
 import './Desktop.css';
 
 const DesktopIconNames = {
@@ -29,6 +30,7 @@ const Desktop = () => {
                 <DesktopIcons name={DesktopIconNames.myPictures} />
             </div>
             <Cmd />
+            <Footer />
         </div>
     );
 }
