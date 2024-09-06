@@ -24,3 +24,14 @@
     margin: 0;
     padding: 0;
 }
+
+.start-menu-button {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.start-menu-button:hover {
+    background-color: #555;
+    color: rgb(55, 188, 229);
+}

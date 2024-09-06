@@ -89,7 +89,7 @@ const Cmd = () => {
                 {cmdHistory.map((cmd, index) => (
                     <div key={index}>
                         <div className='inline-commands'>
-                            <p className='time-input'>{new Date().toLocaleTimeString()}</p>
+                            <p className='time-input'>Test User</p>
                             <p style={{ color: 'green'}}>{cmd.command}</p>
                         </div>
                             {cmd.output && <p style={{margin: '0', paddingLeft: '4px'}}>{cmd.output}</p>}

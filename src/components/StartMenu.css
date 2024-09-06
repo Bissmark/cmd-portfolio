@@ -1,0 +1,23 @@
+.start-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #2d2a2a;
+    color: white;
+    position: fixed;
+    bottom: 32px;
+    left: 0;
+    width: 30%;
+    height: 50%;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+}
+
+.start-menu.hidden {
+    display: none;
+}
+
+.start-menu.visible {
+    display: flex;
+}
