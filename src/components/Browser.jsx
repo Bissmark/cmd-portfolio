@@ -5,12 +5,12 @@ const Browser = ({ onClose }) => {
         <div className="browser-window">
             {/* Header */}
             <div className="browser-header">
+                <span>My Browser</span>
                 <div className="browser-controls">
-                    <button className="control-btn close-btn" onClick={onClose}></button>
-                    <button className="control-btn min-btn"></button>
-                    <button className="control-btn max-btn"></button>
+                    <button className="control-btn min-btn">-</button>
+                    <button className="control-btn max-btn">+</button>
+                    <button className="control-btn close-btn" onClick={onClose}>X</button>
                 </div>
-                <span>My Computer</span>
             </div>
 
             {/* URL Bar */}
@@ -20,7 +20,7 @@ const Browser = ({ onClose }) => {
 
             {/* Content Area */}
             <div className="browser-content">
-                <p>Welcome to My Computer! Here you can explore your files.</p>
+                <p>Welcome to My Browser, here will be information about each of the projects that I have.</p>
             </div>
         </div>
     );

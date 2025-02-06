@@ -35,11 +35,23 @@
     border-radius: 50%;
     border: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
 }
 
-.close-btn { background: red; }
-.min-btn { background: yellow; }
-.max-btn { background: green; }
+.close-btn { 
+    background: red; 
+}
+
+.min-btn { 
+    background: yellow; 
+}
+
+.max-btn { 
+    background: green; 
+}
 
 /* URL Bar */
 .browser-url-bar {
@@ -63,20 +75,4 @@
     overflow: auto;
     cursor: pointer;
     overflow: auto;
-}
-
-.file {
-    padding-left: 10px;
-    padding-right: 10px;
-    text-align: center;
-}
-
-.file:hover {
-    background: #ddd;
-}
-
-.document-icon {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
 }

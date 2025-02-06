@@ -1,13 +1,32 @@
 import { IoDocumentOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 import './MyComputer.css';
 
 const ProjectFiles = {
-    ceegeCrypto: 'CeegeCrypto',
-    geoWhere: 'GeoWhere',
-    trello: 'Trello',
-    snakeRaylib: 'SnakeRaylib',
-    bulletFun: 'BulletFun',
-    todoApp: 'To-Do List',
+    ceegeCrypto: {
+        name: 'CeegeCrypto',
+        url: 'https://github.com/Bissmark/Crypto-Page'
+    },
+    geoWhere: {
+        name: 'GeoWhere',
+        url: 'https://github.com/Bissmark/GeoWhere-Testing'
+    },
+    trello: {
+        name: 'Trello',
+        url: 'https://github.com/Bissmark/trello'
+    },
+    snakeRaylib: {
+        name: 'SnakeRaylib',
+        url: 'asdsa'
+    },
+    bulletFun: {
+        name: 'BulletFun',
+        url: 'https://github.com/Bissmark/bulletFun'
+    },
+    todoApp: {
+        name: 'To-Do List',
+        url: 'https://github.com/Bissmark/School-Notes-V2'
+    }
 }
 
 const MyComputer = ({ onClose }) => {
@@ -16,9 +35,9 @@ const MyComputer = ({ onClose }) => {
             <div className="browser-header">
                 <span>My Computer</span>
                 <div className="browser-controls">
-                    <button className="control-btn min-btn"></button>
-                    <button className="control-btn max-btn"></button>
-                    <button className="control-btn close-btn" onClick={onClose}></button>
+                    <button className="control-btn min-btn">-</button>
+                    <button className="control-btn max-btn">+</button>
+                    <button className="control-btn close-btn" onClick={onClose}>X</button>
                 </div>
             </div>
 
@@ -26,13 +45,18 @@ const MyComputer = ({ onClose }) => {
                 <input type="text" placeholder='https://github.com/Bissmark' />
             </div>
 
-            <div className="browser-content">
-                {Object.keys(ProjectFiles).map((name, index) => (
-                    <div key={index} className="file">
-                        <IoDocumentOutline className="document-icon" />
-                        <p>{name}</p>
-                    </div>
-                ))}
+           <div className="browser-content">
+                {Object.keys(ProjectFiles).map((key, index) => {
+                    const project = ProjectFiles[key]; // Get the project object
+                    return (
+                        <div key={index} className="file">
+                            <a href={project.url} target="_blank">
+                                <IoDocumentOutline className="document-icon" />
+                                {project.name}
+                            </a>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );
