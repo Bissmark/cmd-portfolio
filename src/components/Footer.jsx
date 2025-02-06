@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import { FaRecycle } from "react-icons/fa";
 import './Footer.css';
 import StartMenu from './StartMenu';
