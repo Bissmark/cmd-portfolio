@@ -39,19 +39,16 @@ const Cmd = () => {
     };
 
     const _handleKeyPressCmdPrompt = (e) => {
-        // Clear the command history
         if (e.ctrlKey && e.key === 'l') {
             e.preventDefault();
             setCmdHistory([]);
         }
 
-        // Clear the command prompt input field
         if (e.ctrlKey && e.key === 'c') {
             e.preventDefault();
             setInputValue('');
         }
 
-        // Press the up arrow to show the previous command
         if (e.key === 'ArrowUp') {
             if (cmdHistory.length > 0) {
                 const newIndex = historyIndex === -1 ? cmdHistory.length - 1 : Math.max(historyIndex - 1, 0);
@@ -60,7 +57,6 @@ const Cmd = () => {
             }
         }
 
-        // Press the down arrow to show the next command
         if (e.key === 'ArrowDown') {
             if (cmdHistory.length > 0) {
                 const newIndex = historyIndex + 1;
@@ -98,7 +94,8 @@ const Cmd = () => {
                 </div>
                 <div className='inner-cmd-box'>
                     <p className='time-input'>{new Date().toLocaleTimeString()}</p>
-                    <input 
+                    <input
+                        className='cmd-prompt'
                         type="text" 
                         id="cmd" 
                         ref={inputRef}

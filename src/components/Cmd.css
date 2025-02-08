@@ -70,7 +70,7 @@
     margin-right: 10px;
 }
 
-input {
+.cmd-prompt {
     border: none;
     background: black;
     color: green;
@@ -80,7 +80,7 @@ input {
     outline: none;
 }
 
-input:focus {
+.cmd-prompt:focus {
     outline: none;
 }
 
