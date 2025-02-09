@@ -28,11 +28,15 @@
 }
 
 .control-btn {
-    width: 20px;
-    height: 20px;
-    background: #ccc;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
     border: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
 }
 
 .control-btn:hover {
@@ -54,7 +58,6 @@
     padding: 10px;
 }
 
-/* Resizable Handles */
 .resize-handle {
     position: absolute;
     width: 10px;

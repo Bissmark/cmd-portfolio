@@ -1,5 +1,6 @@
+import { useState, useEffect } from "react";
 import { IoDocumentOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+
 import './MyComputer.css';
 
 const ProjectFiles = {
@@ -29,34 +30,53 @@ const ProjectFiles = {
     }
 }
 
-const MyComputer = ({ onClose }) => {
+const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
+    const [searchQuery, setSearchQuery] = useState('');
+
+    useEffect(() => {
+        registerProgram("Browser");
+        return () => { unregisterProgram("Browser") };
+    }, []);
+
+    const _handleChange = (e) => {
+        e.preventDefault();
+        setSearchQuery(e.target.value);
+    };
+
+    const filteredProjects = Object.values(ProjectFiles).filter(project =>
+        project.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
-        <div className="browser-window">
-            <div className="browser-header">
+        <div className="myComputer-window">
+            <div className="myComputer-header">
                 <span>My Computer</span>
-                <div className="browser-controls">
+                <div className="myComputer-controls">
                     <button className="control-btn min-btn">-</button>
                     <button className="control-btn max-btn">+</button>
                     <button className="control-btn close-btn" onClick={onClose}>X</button>
                 </div>
             </div>
 
-            <div className="browser-url-bar">
-                <input type="text" placeholder='https://github.com/Bissmark' />
+            <div className="myComputer-url-bar">
+                <input type="text" placeholder='' value={searchQuery} onChange={_handleChange} />
             </div>
 
-           <div className="browser-content">
-                {Object.keys(ProjectFiles).map((key, index) => {
-                    const project = ProjectFiles[key]; // Get the project object
-                    return (
-                        <div key={index} className="file">
-                            <a href={project.url} target="_blank">
-                                <IoDocumentOutline className="document-icon" />
-                                {project.name}
-                            </a>
-                        </div>
-                    );
-                })}
+           <div className="myComputer-content">
+                {filteredProjects.length > 0 ? (
+                    filteredProjects.map((project, index) => {
+                        return (
+                            <div key={index} className="file">
+                                <a href={project.url} target="_blank">
+                                    <IoDocumentOutline className="document-icon" />
+                                    <span>{project.name}</span>
+                                </a>
+                            </div>
+                        );
+                    })
+                ) : (
+                    <p>No files found</p>
+                )}
             </div>
         </div>
     );

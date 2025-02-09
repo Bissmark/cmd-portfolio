@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { FaRecycle } from "react-icons/fa";
+import { FaRecycle } from 'react-icons/fa';
 import './Footer.css';
 import StartMenu from './StartMenu';
 
-const Footer = () => {
-
+const Footer = ({ openPrograms }) => {
     const [isStartMenuVisible, setIsStartMenuVisible] = useState(false);
 
     const _handleStartMenu = () => {
@@ -18,8 +17,14 @@ const Footer = () => {
     return (
         <>
             <div className="footer">
-                <div onClick={_handleStartMenu}>
+                <div onClick={_handleStartMenu} className='taskbar'>
                     <FaRecycle className="start-menu-button" />
+                    {openPrograms.includes('My Computer') && (
+                        <FaRecycle className="taskbar-icon" />
+                    )}
+                    {openPrograms.includes('Browser') && (
+                        <FaRecycle className="taskbar-icon" />
+                    )}
                 </div>
                 <div className='time-date'>
                     <p style={{ marginBottom: '2px'}}>{new Date().toLocaleTimeString()}</p>

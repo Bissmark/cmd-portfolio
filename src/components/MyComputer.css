@@ -1,4 +1,4 @@
-.browser-window {
+.myComputer-window {
     position: absolute;
     top: 80px;
     left: 100px;
@@ -14,8 +14,7 @@
     font-family: Arial, sans-serif;
 }
 
-/* Browser Header */
-.browser-header {
+.myComputer-header {
     background: #ddd;
     padding: 8px 12px;
     display: flex;
@@ -24,7 +23,7 @@
     border-bottom: 2px solid #aaa;
 }
 
-.browser-controls {
+.myComputer-controls {
     display: flex;
     gap: 8px;
 }
@@ -41,19 +40,23 @@
 .min-btn { background: yellow; }
 .max-btn { background: green; }
 
-/* URL Bar */
-.browser-url-bar {
+.myComputer-url-bar {
     background: white;
     padding: 6px;
-    margin: 8px;
+    margin: 10px;
     border: 1px solid #aaa;
     border-radius: 3px;
     font-size: 14px;
 }
 
-/* Content Area */
-.browser-content {
-    flex: 1;
+.myComputer-url-bar input {
+    width: -moz-available;
+    height: 20px;
+}
+
+.myComputer-content {
+    display: flex;
+    flex-wrap: wrap;
     background: white;
     margin: 10px;
     padding: 20px;
@@ -62,20 +65,16 @@
     overflow: auto;
 }
 
-.file {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-a {
+.myComputer-content a {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-decoration: none;
     color: black;
+}
+
+.file {
+    padding: 10px;
 }
 
 .file:hover {
@@ -85,6 +84,5 @@ a {
 .document-icon {
     width: 50px;
     height: 50px;
-    margin-right: 10px;
     margin-bottom: 10px;
 }

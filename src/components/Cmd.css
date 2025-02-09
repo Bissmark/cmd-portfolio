@@ -75,8 +75,8 @@
     background: black;
     color: green;
     font-family: monospace;
-    caret-color: white; /* Vertical flashing cursor color */
-    width: calc(100% - 20px); /* Adjust width to fit within the cmd-box padding */
+    caret-color: white;
+    width: calc(100% - 20px);
     outline: none;
 }
 

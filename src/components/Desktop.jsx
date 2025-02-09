@@ -26,6 +26,7 @@ const DesktopIcons = ({ name, onDoubleClick }) => {
 const Desktop = () => {
     const [isBrowserOpen, setIsBrowserOpen] = useState(false);
     const [isMyComputerOpen, setIsMyComputerOpen] = useState(false);
+    const [openPrograms, setOpenPrograms] = useState([]);
 
     const _openBrowser = () => {
         setIsBrowserOpen(true);
@@ -43,6 +44,14 @@ const Desktop = () => {
         setIsMyComputerOpen(false);
     };
 
+    const registerProgram = (program) => {
+        setOpenPrograms([...openPrograms, program]);
+    };
+
+    const unregisterProgram = (program) => {
+        setOpenPrograms(openPrograms.filter(p => p !== program));
+    }
+
     return (
         <div className="desktop-container">
             <div className="icons-container">
@@ -53,10 +62,10 @@ const Desktop = () => {
                 <DesktopIcons name={DesktopIconNames.browser} onDoubleClick={_openBrowser} />
             </div>
 
-            {isBrowserOpen && <Browser onClose={_closeBrowser} />}
-            {isMyComputerOpen && <MyComputer onClose={_closeMyComputer} />}
+            {isBrowserOpen && <Browser onClose={_closeBrowser} registerProgram={registerProgram} unregisterProgram={unregisterProgram} />}
+            {isMyComputerOpen && <MyComputer onClose={_closeMyComputer} registerProgram={registerProgram} unregisterProgram={unregisterProgram} />}
             <Cmd />
-            <Footer />
+            <Footer openPrograms={openPrograms} />
         </div>
     );
 }

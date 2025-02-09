@@ -1,7 +1,8 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./Browser.css";
+import Footer from './Footer';
 
-const Browser = ({ onClose }) => {
+const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
     const [size, setSize] = useState({ width: 800, height: 400 });
     const [position, setPosition] = useState({ x: 100, y: 100 });
@@ -11,7 +12,11 @@ const Browser = ({ onClose }) => {
     const [url, setUrl] = useState("about"); // Default to "about"
     const windowRef = useRef(null);
 
-    // Handle resizing
+    useEffect(() => {
+        registerProgram("Browser");
+        return () => { unregisterProgram("Browser") };
+    }, []);
+
     const handleMouseDown = (e, direction) => {
         setResizing(true);
         setResizeDirection(direction);
@@ -39,7 +44,6 @@ const Browser = ({ onClose }) => {
         setResizeDirection(null);
     };
 
-    // Toggle Fullscreen
     const toggleFullScreen = () => {
         if (isFullScreen) {
             setSize({ width: prevSize.width, height: prevSize.height });
@@ -116,7 +120,7 @@ const Browser = ({ onClose }) => {
             </div>
 
             <div className="browser-url-bar">
-                <input type="text" value={url} onChange={handleUrlChange} placeholder="" />
+                <input type="text" value={url} onChange={handleUrlChange} on placeholder="" />
             </div>
 
             <div>
