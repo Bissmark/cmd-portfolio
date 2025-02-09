@@ -58,7 +58,7 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
     const [resizing, setResizing] = useState(false);
     const [resizeDirection, setResizeDirection] = useState(null);
     const [prevSize, setPrevSize] = useState({ width: 800, height: 400, x: 100, y: 100 });
-    const [url, setUrl] = useState("about");
+    const [url, setUrl] = useState("home");
     const windowRef = useRef(null);
 
     useEffect(() => {
@@ -139,8 +139,19 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
             </div>
             );
         }
-
-        if (url === "about") {
+        if (url === "home") {
+            return (
+                <div className="browser-content">
+                    <h1>Welcome to my portfolio!</h1>
+                    <p>Feel free to explore the different sections of my website.</p>
+                    <p>To navigate to the different pages you can type into the address bar similar to a normal browser, you can get to the about page, contact me page, projects page and skills page</p>
+                    <button onClick={() => setUrl("about")}>About Me</button>
+                    <button onClick={() => setUrl("skills")}>My Skills</button>
+                    <button onClick={() => setUrl("projects")}>View Projects</button>
+                    <button onClick={() => setUrl("contact")}>Contact Me</button>
+                </div>
+            );
+        } else if (url === "about") {
             return (
                 <div className="browser-content">
                     <p>I am a Sydney-based Junior Full-Stack Developer with a deep passion for technology and coding. I love learning different languages and frameworks. I thrive on problem-solving, working under pressure, and tackling challenges head-on. I enjoy collaborating with diverse teams, constantly learning, and bringing innovative ideas to life.</p>
