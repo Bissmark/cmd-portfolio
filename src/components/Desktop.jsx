@@ -26,6 +26,7 @@ const DesktopIcons = ({ name, onDoubleClick }) => {
 const Desktop = () => {
     const [isBrowserOpen, setIsBrowserOpen] = useState(false);
     const [isMyComputerOpen, setIsMyComputerOpen] = useState(false);
+    const [isCmdOpen, setIsCmdOpen] = useState(false);
     const [openPrograms, setOpenPrograms] = useState([]);
 
     const _openBrowser = () => {
@@ -44,6 +45,14 @@ const Desktop = () => {
         setIsMyComputerOpen(false);
     };
 
+    const _openCmd = () => {
+        setIsCmdOpen(true);
+    };
+
+    const _closeCmd = () => {
+        setIsCmdOpen(false);
+    }
+
     const registerProgram = (program) => {
         setOpenPrograms([...openPrograms, program]);
     };
@@ -57,14 +66,14 @@ const Desktop = () => {
             <div className="icons-container">
                 <DesktopIcons name={DesktopIconNames.recycleBin} />
                 <DesktopIcons name={DesktopIconNames.myComputer} onDoubleClick={_openMyComputer} />
-                <DesktopIcons name={DesktopIconNames.cmdPrompt} />
+                <DesktopIcons name={DesktopIconNames.cmdPrompt} onDoubleClick={_openCmd} />
                 <DesktopIcons name={DesktopIconNames.myPictures} />
                 <DesktopIcons name={DesktopIconNames.browser} onDoubleClick={_openBrowser} />
             </div>
 
             {isBrowserOpen && <Browser onClose={_closeBrowser} registerProgram={registerProgram} unregisterProgram={unregisterProgram} />}
             {isMyComputerOpen && <MyComputer onClose={_closeMyComputer} registerProgram={registerProgram} unregisterProgram={unregisterProgram} />}
-            <Cmd />
+            {isCmdOpen && <Cmd onClose={_closeCmd} registerProgram={registerProgram} unregisterProgram={unregisterProgram} /> }
             <Footer openPrograms={openPrograms} />
         </div>
     );

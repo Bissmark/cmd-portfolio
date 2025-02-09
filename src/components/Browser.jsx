@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import "./Browser.css";
-import Footer from './Footer';
 
 const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
@@ -9,7 +8,7 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
     const [resizing, setResizing] = useState(false);
     const [resizeDirection, setResizeDirection] = useState(null);
     const [prevSize, setPrevSize] = useState({ width: 800, height: 400, x: 100, y: 100 });
-    const [url, setUrl] = useState("about"); // Default to "about"
+    const [url, setUrl] = useState("about");
     const windowRef = useRef(null);
 
     useEffect(() => {
@@ -114,7 +113,7 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
                 <span>My Browser</span>
                 <div className="browser-controls">
                     <button className="control-btn min-btn">-</button>
-                    <button className="control-btn max-btn" onClick={toggleFullScreen}>+</button>
+                    <button className="control-btn max-btn" onClick={toggleFullScreen}>□</button>
                     <button className="control-btn close-btn" onClick={onClose}>X</button>
                 </div>
             </div>

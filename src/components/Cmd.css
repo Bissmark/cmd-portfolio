@@ -1,25 +1,24 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    position: absolute; /* Make it behave like browser-window */
+    top: 100px;
+    left: 100px;
+    width: 500px;
+    height: 250px;
+    border: 2px solid #9b9595;
 }
 
 .cmd-box {
+    position: absolute; /* Ensures it floats above other elements */
     background-color: #000;
     color: #fff;
     border: 2px solid #9b9595;
-    margin: 10px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.2em;
     overflow: auto;
-    max-height: 300px;
-    width: 500px;
-    height: 250px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+    width: 100%;
+    height: 100%;
 }
+
 
 .top-box {
     background-color: rgb(66, 62, 62);

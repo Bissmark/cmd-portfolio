@@ -25,6 +25,9 @@ const Footer = ({ openPrograms }) => {
                     {openPrograms.includes('Browser') && (
                         <FaRecycle className="taskbar-icon" />
                     )}
+                    {openPrograms.includes('Powershell') && (
+                        <FaRecycle className="taskbar-icon" />
+                    )}
                 </div>
                 <div className='time-date'>
                     <p style={{ marginBottom: '2px'}}>{new Date().toLocaleTimeString()}</p>
