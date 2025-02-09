@@ -58,11 +58,20 @@
     padding: 10px;
 }
 
+.browser-content h1 {
+    font-size: 20px;
+    color: #333;
+}
+
 .resize-handle {
     position: absolute;
     width: 10px;
     height: 10px;
     background: transparent;
+}
+
+img {
+    height: 136px;
 }
 
 .bottom-right { right: 0; bottom: 0; cursor: nwse-resize; width: 15px; height: 15px; }

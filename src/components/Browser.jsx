@@ -1,5 +1,55 @@
 import { useState, useRef, useEffect } from "react";
+import CryptoImage from "../assets/images/Crypto-Image.png";
+import GeoWhereImage from "../assets/images/GeoWhere.png";
+import TrelloImage from "../assets/images/Trello.png";
+import ToDoImage from "../assets/images/To-Do-List.png";
 import "./Browser.css";
+
+const projectData = {
+    "project-crypto": {
+        name: "Ceege Crypto",
+        description: "A cryptocurrency tracker that allows users to view the latest prices, market caps, and trends.",
+        tech: "React, Chart.js, CoinGecko API",
+        img: CryptoImage,
+        link: "https://github.com/Bissmark/Crypto-Page"
+    },
+    "project-geowhere": {
+        name: "GeoWhere",
+        description: "A Streetview location guessing game where players place a marker and earn points based on proximity.",
+        tech: "React, CSS, HTML, Supabase",
+        img: GeoWhereImage,
+        link: "https://github.com/Bissmark/GeoWhere-Testing"
+    },
+    "project-trello": {
+        name: "Trello Clone",
+        description: "A clone of the popular project management tool with draggable boards and cards.",
+        tech: "React, HTML, CSS, Express, MongoDB, Node",
+        img: TrelloImage,
+        link: "https://github.com/Bissmark/trello"
+    },
+    "project-todo": {
+        name: "To-Do List",
+        description: "A simple task management application.",
+        tech: "React, HTML, CSS",
+        img: ToDoImage,
+        link: "https://github.com/Bissmark/School-Notes-V2"
+    },
+    "project-snakeraylib": {
+        name: "Snake Game",
+        description: "A simple snake game built using the Raylib library.",
+        tech: "C++, Raylib, CMake",
+        img: GeoWhereImage,
+        link: "asdsa"
+    },
+    "project-bulletfun": {
+        name: "Bullet Fun",
+        description: "A simple bullet hell game built using the Raylib library.",
+        tech: "C++, Raylib, CMake",
+        img: GeoWhereImage,
+        link: "https://github.com/Bissmark/bulletFun"
+    }
+};
+
 
 const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
@@ -60,6 +110,36 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
     };
 
     const renderContent = () => {
+        if (url === "projects") {
+            return (
+                <div>
+                    <h2>Projects</h2>
+                    <ul>
+                        {Object.keys(projectData).map((projectKey) => (
+                            <li key={projectKey}>
+                                <button onClick={() => setUrl(projectKey)}>{projectData[projectKey].name}</button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
+
+        if (projectData[url]) {
+            const project = projectData[url];
+            return (
+                <div className="browser-content">
+                <div style={{ textAlign: "center" }}>
+                    <img src={project.img} alt={project.name} />
+                </div>
+                <h1>{project.name}</h1>
+                <p>{project.description}</p>
+                <p><strong>Technologies used:</strong> {project.tech}</p>
+                <p><a href={project.link} target="_blank" rel="noopener noreferrer">GitHub Repository</a></p>
+            </div>
+            );
+        }
+
         if (url === "about") {
             return (
                 <div className="browser-content">
@@ -74,7 +154,8 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
                     <p>You can contact me at:</p>
                     <p>Email: holt.christopher1@gmail.com</p>
                     <p>Phone: 0423 123 456</p>
-                    <p>Github: https://github.com/Bissmark</p>
+                    <p>Github: <a href="https://github.com/Bissmark" target="_blank">https://github.com/Bissmark</a></p>
+                    
                 </div>
             );
         } else if (url === "skills") {
@@ -99,7 +180,6 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
             );
         }
     }
-
 
     return (
         <div
