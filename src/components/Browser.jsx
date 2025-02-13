@@ -58,7 +58,9 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
     const [resizing, setResizing] = useState(false);
     const [resizeDirection, setResizeDirection] = useState(null);
     const [prevSize, setPrevSize] = useState({ width: 800, height: 400, x: 100, y: 100 });
+    const [inputValue, setInputValue] = useState("home");
     const [url, setUrl] = useState("home");
+    const [previousUrl, setPreviousUrl] = useState(null);
     const windowRef = useRef(null);
 
     useEffect(() => {
@@ -105,8 +107,29 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
         setIsFullScreen(!isFullScreen);
     };
 
-    const handleUrlChange = (e) => {
-        setUrl(e.target.value.toLowerCase().trim());
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value.toLowerCase().trim());
+    };
+
+    const handleInputKeyDown = (e) => {
+        if (e.key === "Enter") {
+            setPreviousUrl(url); // Save the current URL before navigating
+            setUrl(inputValue); // Navigate to the new URL
+        }
+    };
+
+    const navigateUrl = (newUrl) => {
+        setPreviousUrl(url);
+        setUrl(newUrl);
+        setInputValue(newUrl); // Sync input with the actual URL
+    };
+
+    const _handleBack = () => {
+        if (previousUrl) {
+            setUrl(previousUrl);
+            setInputValue(previousUrl); // Sync input when going back
+            setPreviousUrl(null);
+        }
     };
 
     const renderContent = () => {
@@ -145,10 +168,10 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
                     <h1>Welcome to my portfolio!</h1>
                     <p>Feel free to explore the different sections of my website.</p>
                     <p>To navigate to the different pages you can type into the address bar similar to a normal browser, you can get to the about page, contact me page, projects page and skills page</p>
-                    <button onClick={() => setUrl("about")}>About Me</button>
-                    <button onClick={() => setUrl("skills")}>My Skills</button>
-                    <button onClick={() => setUrl("projects")}>View Projects</button>
-                    <button onClick={() => setUrl("contact")}>Contact Me</button>
+                    <button onClick={() => navigateUrl("about")}>About Me</button>
+                    <button onClick={() => navigateUrl("skills")}>My Skills</button>
+                    <button onClick={() => navigateUrl("projects")}>View Projects</button>
+                    <button onClick={() => navigateUrl("contact")}>Contact Me</button>
                 </div>
             );
         } else if (url === "about") {
@@ -210,7 +233,8 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
             </div>
 
             <div className="browser-url-bar">
-                <input type="text" value={url} onChange={handleUrlChange} on placeholder="" />
+                <button onClick={_handleBack}className={`back-button ${previousUrl ? "" : "disabled"}`} disabled={!previousUrl}>←</button>
+                <input type="text" value={inputValue} onChange={handleInputChange} onKeyDown={handleInputKeyDown} placeholder="Type a URL and press enter" />
             </div>
 
             <div>
