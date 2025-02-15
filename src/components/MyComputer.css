@@ -87,4 +87,10 @@
     background: transparent;
 }
 
+.folder-view {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 .bottom-right { right: 0; bottom: 0; cursor: nwse-resize; width: 15px; height: 15px; }

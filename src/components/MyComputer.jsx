@@ -5,27 +5,33 @@ import './MyComputer.css';
 const ProjectFiles = {
     ceegeCrypto: {
         name: 'CeegeCrypto',
-        url: 'https://github.com/Bissmark/Crypto-Page'
+        github: 'https://github.com/Bissmark/Crypto-Page',
+        hosted: 'https://ceegecrypto.firebaseapp.com/'
     },
     geoWhere: {
         name: 'GeoWhere',
-        url: 'https://github.com/Bissmark/GeoWhere-Testing'
+        github: 'https://github.com/Bissmark/GeoWhere-Testing',
+        hosted: 'https://geowhere.netlify.app/'
     },
     trello: {
         name: 'Trello',
-        url: 'https://github.com/Bissmark/trello'
+        github: 'https://github.com/Bissmark/trello',
+        hosted: 'https://trello-frontend-q3pp.onrender.com/'
     },
     snakeRaylib: {
         name: 'SnakeRaylib',
-        url: 'asdsa'
+        github: 'asdsa',
+        hosted: 'https://ceegecrypto.netlify.app/'
     },
     bulletFun: {
         name: 'BulletFun',
-        url: 'https://github.com/Bissmark/bulletFun'
+        github: 'https://github.com/Bissmark/bulletFun',
+        hosted: 'https://ceegecrypto.netlify.app/'
     },
     todoApp: {
         name: 'To-Do List',
-        url: 'https://github.com/Bissmark/School-Notes-V2'
+        github: 'https://github.com/Bissmark/School-Notes-V2',
+        hosted: 'https://school-notes-backend.onrender.com/'
     }
 }
 
@@ -38,6 +44,7 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
     const [resizeDirection, setResizeDirection] = useState(null);
     const [prevSize, setPrevSize] = useState({ width: 600, height: 400, x: 100, y: 100 });
     const [searchQuery, setSearchQuery] = useState('');
+    const [openedProject, setOpenedProject] = useState(null);
 
     const windowRef = useRef(null);
 
@@ -103,7 +110,7 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
             onMouseUp={handleMouseUp} 
         >
             <div className="myComputer-header">
-                <span>My Computer</span>
+                <span>{openedProject ? openedProject.name : "My Computer"}</span>
                 <div className="myComputer-controls">
                     <button className="control-btn min-btn">-</button>
                     <button className="control-btn max-btn" onClick={toggleFullScreen}>□</button>
@@ -112,23 +119,43 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
             </div>
 
             <div className="myComputer-url-bar">
-                <input type="text" placeholder='' value={searchQuery} onChange={_handleChange} />
+                {openedProject ? (
+                    <button className="back-button" onClick={() => setOpenedProject(null)}>←</button>
+                ) : (
+                    <input type="text" placeholder='' value={searchQuery} onChange={_handleChange} />
+                )}
             </div>
 
            <div className="myComputer-content">
-                {filteredProjects.length > 0 ? (
-                    filteredProjects.map((project, index) => {
-                        return (
-                            <div key={index} className="file">
-                                <a href={project.url} target="_blank">
+                {openedProject ? (
+                    <div className="folder-view">
+                        <div className="file">
+                            <a href={openedProject.github} target="_blank">
+                                <IoDocumentOutline className="document-icon" />
+                                <span>GitHub Repository</span>
+                            </a>
+                        </div>
+                        {openedProject.hosted && (
+                            <div className="file">
+                                <a href={openedProject.hosted} target="_blank">
                                     <IoDocumentOutline className="document-icon" />
-                                    <span>{project.name}</span>
+                                    <span>Live Website</span>
                                 </a>
                             </div>
-                        );
-                    })
+                        )}
+                    </div>
                 ) : (
-                    <p>No files found</p>
+                    // Default Project List View
+                    filteredProjects.length > 0 ? (
+                        filteredProjects.map((project, index) => (
+                            <div key={index} className="file" onClick={() => setOpenedProject(project)}>
+                                <IoDocumentOutline className="document-icon" />
+                                <span>{project.name}</span>
+                            </div>
+                        ))
+                    ) : (
+                        <p>No files found</p>
+                    )
                 )}
             </div>
             <div className="resize-handle bottom-right" onMouseDown={(e) => handleMouseDown(e, "bottom-right")} />

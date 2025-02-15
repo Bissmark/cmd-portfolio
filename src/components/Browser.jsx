@@ -37,9 +37,9 @@ const projectData = {
     "project-snakeraylib": {
         name: "Snake Game",
         description: "A simple snake game built using the Raylib library.",
-        tech: "C++, Raylib, CMake",
+        tech: "C++, Raylib, WebAssembly",
         img: GeoWhereImage,
-        link: "asdsa"
+        link: "/snakeraylib"
     },
     "project-bulletfun": {
         name: "Bullet Fun",
@@ -147,6 +147,25 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
                 </div>
             );
         }
+
+        if (url === "project-snakeraylib") {
+            return (
+                <div className="browser-content">
+                    <h1>Snake Game</h1>
+                    <p>A simple snake game built using the Raylib library.</p>
+                    <p><strong>Technologies used:</strong> C++, Raylib, CMake</p>
+                    <div style={{ textAlign: "center", margin: "20px 0" }}>
+                        <iframe
+                            src="/snakeraylib/index.html"
+                            width="400"
+                            height="300"
+                            style={{ border: "none" }}
+                            title="Snake Game"
+                        ></iframe>
+                    </div>
+                </div>
+            );
+        }          
 
         if (projectData[url]) {
             const project = projectData[url];
