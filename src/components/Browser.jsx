@@ -46,7 +46,7 @@ const projectData = {
         description: "A simple bullet hell game built using the Raylib library.",
         tech: "C++, Raylib, CMake",
         img: GeoWhereImage,
-        link: "https://github.com/Bissmark/bulletFun"
+        link: "/bulletFun"
     }
 };
 
@@ -61,7 +61,9 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
     const [inputValue, setInputValue] = useState("home");
     const [url, setUrl] = useState("home");
     const [previousUrl, setPreviousUrl] = useState(null);
+
     const windowRef = useRef(null);
+    const canvasRef = useRef(null);
 
     useEffect(() => {
         registerProgram("Browser");
@@ -165,7 +167,26 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
                     </div>
                 </div>
             );
-        }          
+        }
+        
+        if (url === "project-bulletfun") {
+            return (
+                <div className="browser-content">
+                    <h1>Bullet Fun</h1>
+                    <p>A simple bullet hell game built using the Raylib library.</p>
+                    <p><strong>Technologies used:</strong> C++, Raylib, WebAssembly</p>
+                    <div style={{ textAlign: "center", margin: "20px 0" }}>
+                        <iframe
+                            src="/bulletFun/BulletFun.html"
+                            width="400"
+                            height="300"
+                            style={{ border: "none" }}
+                            title="Bullet Fun"
+                        ></iframe>
+                    </div>
+                </div>
+            );
+        }
 
         if (projectData[url]) {
             const project = projectData[url];
