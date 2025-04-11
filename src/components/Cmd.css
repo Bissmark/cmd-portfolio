@@ -1,27 +1,32 @@
 .container {
-    position: absolute; /* Make it behave like browser-window */
-    top: 100px;
-    left: 100px;
-    width: 500px;
-    height: 250px;
-    border: 2px solid #9b9595;
+    position: absolute;
+    background: #000; /* Move background here to avoid double borders */
+    border: 2px solid #c0c0c0; /* Silver border for a classic window look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+.fullscreen {
+    position: fixed;
+    top: 0 !important;
+    left: 0 !important;
+    border: none; /* Remove border in fullscreen for a cleaner look */
 }
 
 .cmd-box {
-    position: absolute; /* Ensures it floats above other elements */
-    background-color: #000;
-    color: #fff;
-    border: 2px solid #9b9595;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.2em;
-    overflow: auto;
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column; /* Stack header, content, and input vertically */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem; /* Slightly smaller for better readability */
+    color: #fff;
+    overflow: hidden; /* Prevent overflow on the box itself */
 }
 
-
 .top-box {
-    background-color: rgb(66, 62, 62);
+    background: linear-gradient(to bottom, #4a4a4a, #333); /* Gradient for a retro window title bar */
+    padding: 4px 8px;
+    user-select: none;
 }
 
 .top-box ul {
@@ -37,61 +42,82 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2px;
-    margin: 0;
-    font-size: small;
-    width: 25px;
-    height: 25px;
+    width: 24px;
+    height: 24px;
+    margin-left: 8px; /* Consistent spacing */
+    font-size: 0.9rem;
+    color: #fff;
+    transition: background-color 0.2s;
 }
 
-.fixed-header {
-    position: sticky;
-    top: 0;
-    z-index: 1;
+.top-box .minimize:hover {
+    background: #777; /* Unified hover for all buttons */
 }
 
-.minimize, .maximize {
-    margin-left: 15px;
+.top-box .maximize:hover {
+    background: #777; /* Unified hover for all buttons */
+}
+
+.top-box .exit:hover {
+    background: #ff0000; /* Red for close button */
 }
 
 .exit {
-    margin-left: 50px;
+    margin-left: 8px; /* Match other buttons */
 }
 
 .exit:hover {
-    background-color: red;
-}
-.minimize:hover, .maximize:hover {
-    background-color: grey;
+    background: #ff3333; /* Brighter red for close button */
 }
 
+.cmd-content {
+    flex: 1; /* Take remaining space */
+    overflow-y: auto; /* Scroll only the content area */
+    padding: 8px;
+    background: #000; /* Ensure consistent background */
+}
 
 .inner-cmd-box {
-    padding: 4px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-top: 1px solid #333; /* Subtle separator */
 }
 
 .time-input {
-    display: inline;
-    margin-right: 10px;
+    margin: 0;
+    margin-right: 12px;
+    color: #ccc; /* Slightly dimmer for contrast */
 }
 
 .cmd-prompt {
+    flex: 1; /* Take available space */
     border: none;
-    background: black;
-    color: green;
-    font-family: monospace;
-    caret-color: white;
-    width: calc(100% - 20px);
-    outline: none;
-}
-
-.cmd-prompt:focus {
+    background: transparent; /* Match terminal background */
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    caret-color: #fff;
     outline: none;
 }
 
 .inline-commands {
     display: flex;
-    height: 30px;
     align-items: center;
-    padding-left: 4px;
+    padding: 4px 0; /* Flexible padding instead of fixed height */
+}
+
+.inline-commands p {
+    margin: 0;
+}
+
+.resize-handle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    bottom: -6px;
+    right: -6px;
+    background: #c0c0c0;
+    cursor: se-resize;
+    border: 1px solid #666;
 }
