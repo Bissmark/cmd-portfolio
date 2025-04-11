@@ -44,6 +44,12 @@
     height: 25px;
 }
 
+.fixed-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
 .minimize, .maximize {
     margin-left: 15px;
 }

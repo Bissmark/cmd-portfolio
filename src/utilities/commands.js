@@ -6,4 +6,5 @@ export const commands = {
     "--contact": "You can contact me at:",
     "--resume": "You can view my resume at:",
     "--projects": "Here are some of my projects:",
+    "--desktop": "In the desktop, you can double click on either My Computer to see the different projects that I have done, they will have a link to the github page and a link to the live hosted site, if you double click on the Browser, you will get some instructions for how to navigate that and what to type into the address bar",
 }

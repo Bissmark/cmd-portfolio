@@ -6,56 +6,73 @@
     resize: both;
     overflow: hidden;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
 .myComputer-header {
     display: flex;
     justify-content: space-between;
-    background: #ddd;
-    padding: 5px;
+    align-items: center;
+    background: #2b2929;
+    color: white;
     cursor: move;
+    flex-shrink: 0;
+    height: 30px;
+    padding-left: 5px;
 }
 
 .myComputer-controls {
     display: flex;
-    gap: 5px;
+    gap: 0;
 }
 
 .control-btn {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
+    width: 26px;
+    height: 100%;
+    background: transparent;
     border: none;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 10px;
+    font-size: 14px;
+    color: white;
+    padding: 0;
+    transition: background-color 0.2s ease;
 }
 
-.close-btn { background: red; }
-.min-btn { background: yellow; }
-.max-btn { background: green; }
+.close-btn:hover { 
+    background-color: red;
+
+}
+.min-btn:hover { 
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.max-btn:hover { 
+    background-color: rgba(0, 0, 0, 0.3);
+}
 
 .myComputer-url-bar {
     padding: 5px;
-    background: #eee;
-    margin-bottom: 0; /* Ensure no extra space */
+    background: black;
+    flex-shrink: 0;
 }
 
 .myComputer-url-bar input {
     width: 98%;
     padding: 5px;
     border: 1px solid #ccc;
+    background-color: white;
 }
 
 .myComputer-content {
+    flex-grow: 1;
     display: flex;
     flex-wrap: wrap;
-    background: white;
+    background: #2b2929;
     padding: 10px;
-    border-radius: 3px;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 .myComputer-content a {
@@ -63,15 +80,20 @@
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100px;
     padding: 10px;
+    color: white;
 }
 
 .file:hover {
-    background: #ddd;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .document-icon {
@@ -93,4 +115,20 @@
     gap: 10px;
 }
 
-.bottom-right { right: 0; bottom: 0; cursor: nwse-resize; width: 15px; height: 15px; }
+.myComputer-footer {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    color: white;
+    padding: 5px;
+    background: #2b2929;
+    border-top: 1px solid #ccc;
+}
+
+.bottom-right { 
+    right: 0; 
+    bottom: 0; 
+    cursor: nwse-resize; 
+    width: 15px; 
+    height: 15px; 
+}

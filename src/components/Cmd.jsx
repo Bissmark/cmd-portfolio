@@ -129,7 +129,7 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
             onMouseUp={handleMouseUp}
         >
             <div className="cmd-box" onClick={_handleCmdClick} onKeyDown={_handleKeyPressCmdPrompt}>
-                <div className='top-box'>
+                <div className='top-box fixed-header'>
                     <ul>
                         <li className='minimize'>-</li>
                         <li className='maximize' onClick={toggleFullScreen}>□</li>
@@ -137,15 +137,15 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
                     </ul>
                 </div>
                 <div>
-                {cmdHistory.map((cmd, index) => (
-                    <div key={index}>
-                        <div className='inline-commands'>
-                            <p className='time-input'>Test User</p>
-                            <p style={{ color: 'green'}}>{cmd.command}</p>
+                    {cmdHistory.map((cmd, index) => (
+                        <div key={index}>
+                            <div className='inline-commands'>
+                                <p className='time-input'>Test User</p>
+                                <p style={{ color: 'green'}}>{cmd.command}</p>
+                            </div>
+                                {cmd.output && <p style={{margin: '0', paddingLeft: '4px'}}>{cmd.output}</p>}
                         </div>
-                            {cmd.output && <p style={{margin: '0', paddingLeft: '4px'}}>{cmd.output}</p>}
-                    </div>
-                ))}
+                    ))}
                 </div>
                 <div className='inner-cmd-box'>
                     <p className='time-input'>{new Date().toLocaleTimeString()}</p>

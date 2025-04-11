@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { IoDocumentOutline } from "react-icons/io5";
+import DocumentImage from "../assets/images/myDocuments.png";
+import ChromeImage from "../assets/images/Chrome.png";
 import './MyComputer.css';
 
 const ProjectFiles = {
@@ -122,7 +124,7 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
                 {openedProject ? (
                     <button className="back-button" onClick={() => setOpenedProject(null)}>←</button>
                 ) : (
-                    <input type="text" placeholder='' value={searchQuery} onChange={_handleChange} />
+                    <input type="text" placeholder='Search This PC' value={searchQuery} onChange={_handleChange} />
                 )}
             </div>
 
@@ -131,14 +133,14 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
                     <div className="folder-view">
                         <div className="file">
                             <a href={openedProject.github} target="_blank">
-                                <IoDocumentOutline className="document-icon" />
+                                <img src={ChromeImage} className="document-icon" alt="Chrome Icon" />
                                 <span>GitHub Repository</span>
                             </a>
                         </div>
                         {openedProject.hosted && (
                             <div className="file">
                                 <a href={openedProject.hosted} target="_blank">
-                                    <IoDocumentOutline className="document-icon" />
+                                    <img src={ChromeImage} className="document-icon" alt="Chrome Icon" />
                                     <span>Live Website</span>
                                 </a>
                             </div>
@@ -149,7 +151,7 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
                     filteredProjects.length > 0 ? (
                         filteredProjects.map((project, index) => (
                             <div key={index} className="file" onClick={() => setOpenedProject(project)}>
-                                <IoDocumentOutline className="document-icon" />
+                                <img src={DocumentImage} alt="Document Image" />
                                 <span>{project.name}</span>
                             </div>
                         ))
@@ -159,6 +161,9 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
                 )}
             </div>
             <div className="resize-handle bottom-right" onMouseDown={(e) => handleMouseDown(e, "bottom-right")} />
+            <div className="myComputer-footer">
+                <div>{Object.keys(ProjectFiles).length} items</div>
+            </div>
         </div>
     );
 }
