@@ -4,6 +4,10 @@ import Cmd from "./cmd";
 import Footer from "./Footer";
 import Browser from './Browser';
 import MyComputer from './MyComputer';
+import ChromeImage from '../assets/images/Chrome.png';
+import FolderImage from '../assets/images/Folder.png';
+import PowershellImage from '../assets/images/Powershell.png';
+import RecycleBinImage from '../assets/images/RecycleBin.png';
 import './Desktop.css';
 
 const DesktopIconNames = {
@@ -15,13 +19,31 @@ const DesktopIconNames = {
 }
 
 const DesktopIcons = ({ name, onDoubleClick }) => {
-    return (
-        <div className="select-icon" onDoubleClick={onDoubleClick}>
-            <FaRecycle className="desktop-icon" />
-            <h1>{name}</h1>
-        </div>
-    );
-}
+  // Map icon names to images or React icons
+  const getIcon = (name) => {
+    switch (name) {
+      case DesktopIconNames.browser:
+        return <img src={ChromeImage} className="desktop-icon" alt={name} />;
+      case DesktopIconNames.myComputer:
+        return <img src={FolderImage} className="desktop-icon" alt={name} />;
+      case DesktopIconNames.cmdPrompt:
+        return <img src={PowershellImage} className="desktop-icon" alt={name} />;
+      case DesktopIconNames.myPictures:
+        return <img src={FolderImage} className="desktop-icon" alt={name} />;
+      case DesktopIconNames.recycleBin:
+        return <img src={RecycleBinImage} className="desktop-icon" alt={name} />;
+      default:
+        return <FaRecycle className="desktop-icon" />;
+    }
+  };
+
+  return (
+    <div className="select-icon" onDoubleClick={onDoubleClick}>
+      {getIcon(name)}
+      <h1>{name}</h1>
+    </div>
+  );
+};
 
 const Desktop = () => {
     const [isBrowserOpen, setIsBrowserOpen] = useState(false);
@@ -55,6 +77,7 @@ const Desktop = () => {
 
     const registerProgram = (program) => {
         setOpenPrograms([...openPrograms, program]);
+        console.log(openPrograms);
     };
 
     const unregisterProgram = (program) => {

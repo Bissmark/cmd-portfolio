@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { FaRecycle } from 'react-icons/fa';
+import WindowsStart from '../assets/images/WindowsStart.png';
+import ChomeImage from '../assets/images/Chrome.png';
+import ExplorerIcon from '../assets/images/Explorer.png';
+import PowershellImage from '../assets/images/Powershell.png';
 import './Footer.css';
 import StartMenu from './StartMenu';
 
@@ -18,15 +22,16 @@ const Footer = ({ openPrograms }) => {
         <>
             <div className="footer">
                 <div onClick={_handleStartMenu} className='taskbar'>
-                    <FaRecycle className="start-menu-button" />
+                    {/* <FaRecycle className="start-menu-button" /> */}
+                    <img className='start-menu-button' src={WindowsStart} alt="" />
                     {openPrograms.includes('My Computer') && (
-                        <FaRecycle className="taskbar-icon" />
+                        <img src={ExplorerIcon} className="taskbar-icon" alt="Explorer Icon" />
                     )}
                     {openPrograms.includes('Browser') && (
-                        <FaRecycle className="taskbar-icon" />
+                        <img src={ChomeImage} className="taskbar-icon" alt="Chrome Icon" />
                     )}
                     {openPrograms.includes('Powershell') && (
-                        <FaRecycle className="taskbar-icon" />
+                        <img src={PowershellImage} className="taskbar-icon" alt="Explorer Icon" />
                     )}
                 </div>
                 <div className='time-date'>

@@ -31,6 +31,7 @@
 
 .start-menu-button {
     display: flex;
+    height: 15px;
     align-items: center;
     padding: 8px;
 }
@@ -43,5 +44,11 @@
 .taskbar-icon {
     display: flex;
     align-items: center;
+    height: 15px;
     padding: 8px;
+}
+
+.taskbar-icon:hover {
+    background-color: #555;
+    color: rgb(55, 188, 229);
 }
