@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ZIndexManager } from './ZIndexManager';
 import { FaRecycle } from "react-icons/fa";
 import Cmd from "./Cmd";
 import Footer from "./Footer";
@@ -19,19 +20,18 @@ const DesktopIconNames = {
 }
 
 const DesktopIcons = ({ name, onDoubleClick }) => {
-  // Map icon names to images or React icons
   const getIcon = (name) => {
     switch (name) {
       case DesktopIconNames.browser:
-        return <img src={ChromeImage} className="desktop-icon" alt={name} />;
+        return <img src={ChromeImage} className="desktop-icon" style={{paddingTop: '10px'}} alt={name} />;
       case DesktopIconNames.myComputer:
-        return <img src={FolderImage} className="desktop-icon" alt={name} />;
+        return <img src={FolderImage} className="desktop-icon" style={{paddingTop: '10px'}} alt={name} />;
       case DesktopIconNames.cmdPrompt:
         return <img src={PowershellImage} className="desktop-icon" alt={name} />;
       case DesktopIconNames.myPictures:
-        return <img src={FolderImage} className="desktop-icon" alt={name} />;
+        return <img src={FolderImage} className="desktop-icon" style={{paddingTop: '10px'}} alt={name} />;
       case DesktopIconNames.recycleBin:
-        return <img src={RecycleBinImage} className="desktop-icon" alt={name} />;
+        return <img src={RecycleBinImage} className="desktop-icon" style={{paddingTop: '5px'}} alt={name} />;
       default:
         return <FaRecycle className="desktop-icon" />;
     }
@@ -48,36 +48,28 @@ const DesktopIcons = ({ name, onDoubleClick }) => {
 const Desktop = () => {
     const [isBrowserOpen, setIsBrowserOpen] = useState(false);
     const [isMyComputerOpen, setIsMyComputerOpen] = useState(false);
-    const [isCmdOpen, setIsCmdOpen] = useState(false);
+    const [isCmdOpen, setIsCmdOpen] = useState(true);
     const [openPrograms, setOpenPrograms] = useState([]);
 
+    const { bringToFront, getZIndex } = ZIndexManager();
+
     const _openBrowser = () => {
+        bringToFront("Browser");
         setIsBrowserOpen(true);
-    };
-    
-    const _closeBrowser = () => {
-        setIsBrowserOpen(false);
     };
 
     const _openMyComputer = () => {
+        bringToFront("My Computer");
         setIsMyComputerOpen(true);
     };
 
-    const _closeMyComputer = () => {
-        setIsMyComputerOpen(false);
-    };
-
     const _openCmd = () => {
+        bringToFront("Powershell");
         setIsCmdOpen(true);
     };
 
-    const _closeCmd = () => {
-        setIsCmdOpen(false);
-    }
-
     const registerProgram = (program) => {
         setOpenPrograms([...openPrograms, program]);
-        console.log(openPrograms);
     };
 
     const unregisterProgram = (program) => {
@@ -94,9 +86,34 @@ const Desktop = () => {
                 <DesktopIcons name={DesktopIconNames.browser} onDoubleClick={_openBrowser} />
             </div>
 
-            {isBrowserOpen && <Browser onClose={_closeBrowser} registerProgram={registerProgram} unregisterProgram={unregisterProgram} />}
-            {isMyComputerOpen && <MyComputer onClose={_closeMyComputer} registerProgram={registerProgram} unregisterProgram={unregisterProgram} />}
-            {isCmdOpen && <Cmd onClose={_closeCmd} registerProgram={registerProgram} unregisterProgram={unregisterProgram} /> }
+            {isBrowserOpen && (
+                <div
+                    className="window"
+                    onMouseDown={() => bringToFront("browser")}
+                    style={{ position: 'absolute', zIndex: getZIndex("browser") }}
+                >
+                    <Browser onClose={() => setIsBrowserOpen(false)} registerProgram={registerProgram} unregisterProgram={unregisterProgram} />
+                </div>
+            )}
+            {isMyComputerOpen && (
+                <div
+                    className="window"
+                    onMouseDown={() => bringToFront("myComputer")}
+                    style={{ position: 'absolute', zIndex: getZIndex("myComputer") }}
+                >
+                    <MyComputer onClose={() => setIsMyComputerOpen(false)} registerProgram={registerProgram} unregisterProgram={unregisterProgram} />
+                </div>
+            )}
+
+            {isCmdOpen && (
+                <div
+                    className="window"
+                    onMouseDown={() => bringToFront("cmd")}
+                    style={{ position: 'absolute', zIndex: getZIndex("cmd") }}
+                >
+                    <Cmd onClose={() => setIsCmdOpen(false)} registerProgram={registerProgram} unregisterProgram={unregisterProgram} />
+                </div>
+            )}
             <Footer openPrograms={openPrograms} />
         </div>
     );

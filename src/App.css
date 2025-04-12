@@ -1,7 +1,17 @@
-body {
-    background-image: url('./assets/images/DesktopBackground.jpg');
-    background-size: cover;
+html, body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    height: 100%;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('./assets/images/DesktopBackground.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
 }

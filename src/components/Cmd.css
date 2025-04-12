@@ -87,7 +87,12 @@
 .time-input {
     margin: 0;
     margin-right: 12px;
-    color: #ccc; /* Slightly dimmer for contrast */
+}
+
+.username {
+    margin: 0;
+    margin-right: 12px;
+    color: #0033ff;
 }
 
 .cmd-prompt {

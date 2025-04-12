@@ -9,14 +9,12 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
             command: '',
             output:
                 'Welcome to my portfolio!\n' +
-                'This is a simple command prompt simulation.\n' +
-                'You can type commands like --help, --about, --contact, --resume, --projects\n' +
-                'to see different information.\n' +
+                'This is a Windows 10 style portfolio with many different ways to see the fun projects that I have created.\n' +
+                'You can either navigate the website by going through the Command Prompt, the Start Menu, the Browser or My Computer\n' +
+                'You can type commands like --help, --about, --contact, --resume, --projects to see different information.\n' +
                 'If you want to clear the command prompt history, press Ctrl + L\n' +
                 'If you want to clear the command prompt input field, press Ctrl + C\n' +
-                'If you are not comfortable with using the command prompt, you can also\n' +
-                'double click on the My Computer icon on the desktop to see my projects\n' +
-                'and double click on the Browser icon to see some instructions for how to navigate that and what to type into the address bar\n',
+                'I hope you have fun navigating around my website!!'
         },
     ]);
     const [historyIndex, setHistoryIndex] = useState(-1);
@@ -31,15 +29,17 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
     const contentRef = useRef(null);
 
     useEffect(() => {
-        if (inputRef.current) {
-            inputRef.current.focus();
+        let registered = false;
+
+        if (!registered) {
+            registerProgram('Powershell');
+            registered = true;
         }
-        registerProgram('Powershell');
-        console.log('registered');
+
         return () => {
             unregisterProgram('Powershell');
         };
-    }, [registerProgram, unregisterProgram]);
+    }, []);
 
     useEffect(() => {
         if (contentRef.current) {
@@ -177,14 +177,27 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
                         <div key={index}>
                             {cmd.command && (
                                 <div className="inline-commands">
-                                    <p className="time-input">Test User</p>
-                                    <p style={{ color: 'green' }}>{cmd.command}</p>
+                                    <p className="username">Test User: </p>
+                                    <p style={{ color: 'green', marginLeft: '10px' }}>{cmd.command}</p>
                                 </div>
                             )}
                             {cmd.output && (
                                 <div style={{ margin: '0', paddingLeft: '4px', whiteSpace: 'pre-wrap' }}>
                                     {typeof cmd.output === 'string' ? (
-                                        cmd.output
+                                        cmd.output.split('\n').map((line, i) => (
+                                            <p key={i}>
+                                                {line.split(/(--\w+)/g).map((part, j) => {
+                                                    if (/^--\w+$/.test(part)) {
+                                                        return (
+                                                            <span key={j} style={{ color: '#00ff00', fontWeight: 'bold' }}>
+                                                                {part}
+                                                            </span>
+                                                        );
+                                                    }
+                                                    return <span key={j}>{part}</span>;
+                                                })}
+                                            </p>
+                                        ))
                                     ) : cmd.output.type === 'projects' ? (
                                         <div>
                                             <p>projects</p>
