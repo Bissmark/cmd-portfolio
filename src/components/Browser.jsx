@@ -3,6 +3,7 @@ import CryptoImage from "../assets/images/Crypto-Image.png";
 import GeoWhereImage from "../assets/images/GeoWhere.png";
 import TrelloImage from "../assets/images/Trello.png";
 import ToDoImage from "../assets/images/To-Do-List.png";
+import MeImage from "../assets/images/Me.png";
 import "./Browser.css";
 
 const projectData = {
@@ -11,28 +12,32 @@ const projectData = {
         description: "A cryptocurrency tracker that allows users to view the latest prices, market caps, and trends.",
         tech: "React, Chart.js, CoinGecko API",
         img: CryptoImage,
-        link: "https://github.com/Bissmark/Crypto-Page"
+        link: "https://github.com/Bissmark/Crypto-Page",
+        live: "https://ceegecrypto.firebaseapp.com/"
     },
     "project-geowhere": {
         name: "GeoWhere",
         description: "A Streetview location guessing game where players place a marker and earn points based on proximity.",
         tech: "React, CSS, HTML, Supabase",
         img: GeoWhereImage,
-        link: "https://github.com/Bissmark/GeoWhere-Testing"
+        link: "https://github.com/Bissmark/GeoWhere-Testing",
+        live: "https://geowhere.netlify.app/"
     },
     "project-trello": {
         name: "Trello Clone",
         description: "A clone of the popular project management tool with draggable boards and cards.",
         tech: "React, HTML, CSS, Express, MongoDB, Node",
         img: TrelloImage,
-        link: "https://github.com/Bissmark/trello"
+        link: "https://github.com/Bissmark/trello",
+        live: "https://trello-frontend-q3pp.onrender.com/"
     },
     "project-todo": {
         name: "To-Do List",
         description: "A simple task management application.",
         tech: "React, HTML, CSS",
         img: ToDoImage,
-        link: "https://github.com/Bissmark/School-Notes-V2"
+        link: "https://github.com/Bissmark/School-Notes-V2",
+        live: "https://school-notes-backend.onrender.com/"
     },
     "project-snakeraylib": {
         name: "Snake Game",
@@ -137,7 +142,7 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
     const renderContent = () => {
         if (url === "projects") {
             return (
-                <div>
+                <div className="browser-content">
                     <h2>Projects</h2>
                     <ul>
                         {Object.keys(projectData).map((projectKey) => (
@@ -193,7 +198,9 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
             return (
                 <div className="browser-content">
                 <div style={{ textAlign: "center" }}>
-                    <img src={project.img} alt={project.name} />
+                    <a href={project.live} target="_blank" rel="noopener noreferrer">
+                        <img src={project.img} alt={project.name} className="project-image" />
+                    </a>
                 </div>
                 <h1>{project.name}</h1>
                 <p>{project.description}</p>
@@ -205,13 +212,17 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
         if (url === "home") {
             return (
                 <div className="browser-content">
-                    <h1>Welcome to my portfolio!</h1>
+                    <h1 style={{marginBottom: "10px"}}>Welcome to the Browser portion of my portfolio!</h1>
+                    <p>There are multiple ways to view my portfolio, you can view my projects, about me, contact me and my resume using the start menu, the powershell (command prompt), My Computer or the Browser.</p>
                     <p>Feel free to explore the different sections of my website.</p>
                     <p>To navigate to the different pages you can type into the address bar similar to a normal browser, you can get to the about page, contact me page, projects page and skills page</p>
-                    <button onClick={() => navigateUrl("about")}>About Me</button>
-                    <button onClick={() => navigateUrl("skills")}>My Skills</button>
-                    <button onClick={() => navigateUrl("projects")}>View Projects</button>
-                    <button onClick={() => navigateUrl("contact")}>Contact Me</button>
+                    <p>If you type the links into the address bar you need to either type: projects, skills, about or contact and then press enter</p>
+                    <div className="home-buttons">
+                        <button onClick={() => navigateUrl("about")}>About Me</button>
+                        <button onClick={() => navigateUrl("skills")}>My Skills</button>
+                        <button onClick={() => navigateUrl("projects")}>View Projects</button>
+                        <button onClick={() => navigateUrl("contact")}>Contact Me</button>
+                    </div>
                 </div>
             );
         } else if (url === "about") {
@@ -224,12 +235,15 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
             );
         } else if (url === "contact") {
             return (
-                <div className="browser-content">
-                    <p>You can contact me at:</p>
-                    <p>Email: holt.christopher1@gmail.com</p>
-                    <p>Phone: 0423 123 456</p>
-                    <p>Github: <a href="https://github.com/Bissmark" target="_blank">https://github.com/Bissmark</a></p>
-                    
+                <div className="browser-content-contact">
+                    <div className="contact">
+                        <p>You can contact me at:</p>
+                        <p>Email: holt.christopher1@gmail.com</p>
+                        <p>Phone: 0408 469 577</p>
+                        <p>Github: <a href="https://github.com/Bissmark" target="_blank">https://github.com/Bissmark</a>
+                        </p>
+                    </div>
+                    <img className="" src={MeImage} alt="Picture of Me" />
                 </div>
             );
         } else if (url === "skills") {
@@ -277,8 +291,12 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
                 <input type="text" value={inputValue} onChange={handleInputChange} onKeyDown={handleInputKeyDown} placeholder="Type a URL and press enter" />
             </div>
 
-            <div>
+            <div className="browser-box">
                 {renderContent()}
+            </div>
+
+            <div className="browser-footer">
+                <p>Powered by React</p>
             </div>
 
             <div className="resize-handle bottom-right" onMouseDown={(e) => handleMouseDown(e, "bottom-right")} />

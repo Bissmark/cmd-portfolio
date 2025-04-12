@@ -33,17 +33,6 @@ const projects = [
     },
 ];
 
-// const formatProjectsTree = () => {
-//     let output = 'projects\n';
-//     projects.forEach((project, index) => {
-//         const isLast = index === projects.length - 1;
-//         output += `${isLast ? '└──' : '├──'} ${project.name}\n`;
-//         output += `${isLast ? '    ' : '│   '} ├── Live: ${project.live}\n`;
-//         output += `${isLast ? '    ' : '│   '} └── GitHub: ${project.github}\n`;
-//     });
-//     return output;
-// };
-
 export const commands = {
     "--help": "Here are the available commands: --help, --about, --contact, --resume, --projects\n\n If you want to clear the command prompt history, press Ctrl + L\n\n If you want to clear the command prompt input field, press Ctrl + C",
     "--about": "I am a software engineer and I love to code!",

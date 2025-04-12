@@ -1,10 +1,12 @@
 .browser-window {
     position: absolute;
-    background: white;
     border: 2px solid #333;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
     resize: both;
     overflow: hidden;
+    background: #2b2929;
+    display: flex;
+    flex-direction: column;
 }
 
 .fullscreen {
@@ -17,9 +19,13 @@
 .browser-header {
     display: flex;
     justify-content: space-between;
-    background: #ddd;
-    padding: 5px;
+    align-items: center;
+    background: #2b2929;
+    color: white;
     cursor: move;
+    flex-shrink: 0;
+    height: 30px;
+    padding-left: 5px;
 }
 
 .browser-controls {
@@ -46,8 +52,12 @@
 .browser-url-bar {
     display: flex;
     flex-direction: row;
+    height: 30px;
     padding: 5px;
-    background: #eee;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: #2b2929;
+    flex-shrink: 0;
 }
 
 .browser-url-bar input {
@@ -63,7 +73,7 @@
     cursor: pointer;
     font-size: 18px;
     padding: 5px;
-    color: black;
+    color: white;
 }
 
 .back-button.disabled {
@@ -72,12 +82,77 @@
 }
 
 .browser-content {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: #2b2929;
     padding: 10px;
+    color: white;
 }
 
 .browser-content h1 {
-    font-size: 20px;
-    color: #333;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+}
+
+.browser-content p {
+    font-size: 14px;
+    margin: 5px;
+    color: white;
+}
+
+.browser-content button {
+    background: #2b2929;
+    color: white;
+    border: 1px solid #ccc;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.browser-content button:hover {
+    background: #444;
+}
+
+.browser-content-contact {
+    display: flex;
+    justify-content:  space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.browser-box {
+    flex: 1;
+    padding: 10px;
+}
+
+.contact {
+    border: 1px solid #ccc;
+    color: white;
+    padding: 5px;
+}
+
+.browser-footer {
+    flex-shrink: 0;
+    border-top: 1px solid #ccc;
+    color: white;
+    padding: 0;
+}
+
+.browser-footer p {
+    margin: 0;
+    padding: 5px;
+    font-size: 12px;
+    color: white;
+}
+
+.home-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 .resize-handle {
