@@ -31,9 +31,10 @@
 
 .start-menu-button {
     display: flex;
-    height: 15px;
+    height: 25px;
     align-items: center;
     padding: 8px;
+    margin-left: 5px;
 }
 
 .start-menu-button:hover {

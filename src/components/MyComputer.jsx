@@ -40,7 +40,7 @@ const ProjectFiles = {
 
 const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
-    const [size, setSize] = useState({ width: 600, height: 400 });
+    const [size, setSize] = useState({ width: 800, height: 600 });
     const [position, setPosition] = useState({ x: 100, y: 100 });
     const [resizing, setResizing] = useState(false);
     const [resizeDirection, setResizeDirection] = useState(null);

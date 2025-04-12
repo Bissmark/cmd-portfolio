@@ -21,7 +21,7 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
     ]);
     const [historyIndex, setHistoryIndex] = useState(-1);
     const [isFullScreen, setIsFullScreen] = useState(false);
-    const [size, setSize] = useState({ width: 500, height: 250 });
+    const [size, setSize] = useState({ width: 1200, height: 800 });
     const [position, setPosition] = useState({ x: 100, y: 100 });
     const [resizing, setResizing] = useState(false);
     const [resizeDirection, setResizeDirection] = useState(null);
