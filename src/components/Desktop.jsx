@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaRecycle } from "react-icons/fa";
-import Cmd from "./cmd";
+import Cmd from "./Cmd";
 import Footer from "./Footer";
 import Browser from './Browser';
 import MyComputer from './MyComputer';
