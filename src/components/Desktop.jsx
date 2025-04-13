@@ -93,8 +93,8 @@ const Desktop = () => {
 
             {isBrowserOpen && (
                 <div
-                    onMouseDown={() => bringToFront("browser")}
-                    style={{ position: 'absolute', zIndex: getZIndex("browser") }}
+                    onMouseDown={() => bringToFront("Browser")}
+                    style={{ position: 'absolute', zIndex: getZIndex("Browser") }}
                 >
                     <Browser onClose={() => closeProgram("Browser", setIsBrowserOpen)} 
                     registerProgram={registerProgram} 
