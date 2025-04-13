@@ -76,6 +76,11 @@ const Desktop = () => {
         setOpenPrograms(openPrograms.filter(p => p !== program));
     }
 
+    const closeProgram = (name, setStateFunction) => {
+        setStateFunction(false);
+        unregisterProgram(name);
+    }
+
     return (
         <div className="desktop-container">
             <div className="icons-container">
@@ -88,30 +93,36 @@ const Desktop = () => {
 
             {isBrowserOpen && (
                 <div
-                    className="window"
                     onMouseDown={() => bringToFront("browser")}
                     style={{ position: 'absolute', zIndex: getZIndex("browser") }}
                 >
-                    <Browser onClose={() => setIsBrowserOpen(false)} registerProgram={registerProgram} unregisterProgram={unregisterProgram} />
+                    <Browser onClose={() => closeProgram("Browser", setIsBrowserOpen)} 
+                    registerProgram={registerProgram} 
+                    unregisterProgram={unregisterProgram} 
+                    />
                 </div>
             )}
             {isMyComputerOpen && (
                 <div
-                    className="window"
-                    onMouseDown={() => bringToFront("myComputer")}
-                    style={{ position: 'absolute', zIndex: getZIndex("myComputer") }}
+                    onMouseDown={() => bringToFront("My Computer")}
+                    style={{ position: 'absolute', zIndex: getZIndex("My Computer") }}
                 >
-                    <MyComputer onClose={() => setIsMyComputerOpen(false)} registerProgram={registerProgram} unregisterProgram={unregisterProgram} />
+                    <MyComputer onClose={() => closeProgram("My Computer", setIsMyComputerOpen)} 
+                        registerProgram={registerProgram} 
+                        unregisterProgram={unregisterProgram} 
+                        />
                 </div>
             )}
 
             {isCmdOpen && (
                 <div
-                    className="window"
-                    onMouseDown={() => bringToFront("cmd")}
-                    style={{ position: 'absolute', zIndex: getZIndex("cmd") }}
+                    onMouseDown={() => bringToFront("Powershell")}
+                    style={{ position: 'absolute', zIndex: getZIndex("Powershell") }}
                 >
-                    <Cmd onClose={() => setIsCmdOpen(false)} registerProgram={registerProgram} unregisterProgram={unregisterProgram} />
+                    <Cmd onClose={() => closeProgram("Poweershell", setIsCmdOpen)} 
+                    registerProgram={registerProgram} 
+                    unregisterProgram={unregisterProgram} 
+                    />
                 </div>
             )}
             <Footer openPrograms={openPrograms} />

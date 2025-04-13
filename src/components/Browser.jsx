@@ -280,9 +280,9 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
             <div className="browser-header">
                 <span>My Browser</span>
                 <div className="browser-controls">
-                    <button className="control-btn min-btn">-</button>
-                    <button className="control-btn max-btn" onClick={toggleFullScreen}>□</button>
-                    <button className="control-btn close-btn" onClick={onClose}>X</button>
+                    <button className="control-btn-browser min-btn">-</button>
+                    <button className="control-btn-browser max-btn" onClick={toggleFullScreen}>□</button>
+                    <button className="control-btn-browser close-btn" onClick={onClose}>X</button>
                 </div>
             </div>
 
