@@ -240,8 +240,7 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
                         <p>You can contact me at:</p>
                         <p>Email: holt.christopher1@gmail.com</p>
                         <p>Phone: 0408 469 577</p>
-                        <p>Github: <a href="https://github.com/Bissmark" target="_blank">https://github.com/Bissmark</a>
-                        </p>
+                        <p>Github: <a href="https://github.com/Bissmark" target="_blank">https://github.com/Bissmark</a></p>
                     </div>
                     <img className="" src={MeImage} alt="Picture of Me" />
                 </div>

@@ -1,14 +1,12 @@
 .start-menu {
     display: none;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: #2d2a2a;
     color: white;
     position: fixed;
     bottom: 54px;
     left: 0;
-    width: 30%;
+    width: 40%;
     height: 50%;
     z-index: 1;
     transition: opacity 0.3s ease;
@@ -20,4 +18,40 @@
 
 .start-menu.visible {
     display: flex;
+}
+
+.start-menu-leftside {
+    border-right: 1px solid #ccc;
+    height: 100%;
+    width: 30%;
+}
+
+.start-menu-leftside h2 {
+    margin: 0;
+    padding: 10px;
+    font-size: 1.5rem;
+}
+
+.start-menu-leftside h2:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.start-menu-rightside {
+    width: 70%;
+    padding: 10px;
+    overflow: auto;
+}
+
+.start-menu-rightside h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.start-menu-contact p {
+    margin: 0;
+}
+
+.start-menu-skills p {
+    margin: 0;
 }
