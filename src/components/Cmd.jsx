@@ -53,21 +53,39 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
         e.preventDefault();
     };
 
-    const handleMouseMove = (e) => {
-        if (!resizing) return;
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            if (!resizing) return;
 
-        let newWidth = size.width;
-        let newHeight = size.height;
+            let newWidth = size.width;
+            let newHeight = size.height;
 
-        if (resizeDirection.includes('right')) {
-            newWidth = Math.max(300, e.clientX - position.x);
-        }
-        if (resizeDirection.includes('bottom')) {
-            newHeight = Math.max(200, e.clientY - position.y);
-        }
+            if (resizeDirection.includes('right')) {
+                newWidth = Math.max(300, e.clientX - position.x);
+            }
+            if (resizeDirection.includes('bottom')) {
+                newHeight = Math.max(200, e.clientY - position.y);
+            }
 
-        setSize({ width: newWidth, height: newHeight });
-    };
+            setSize({ width: newWidth, height: newHeight });
+        };
+
+        const handleMouseUp = () => {
+            setResizing(false);
+            setResizeDirection(null);
+        };
+
+        // Attach listeners to window
+        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mouseup', handleMouseUp);
+
+        // Cleanup
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mouseup', handleMouseUp);
+        };
+    }, [resizing, resizeDirection, size, position]);
+
 
     const handleMouseUp = () => {
         setResizing(false);
@@ -152,8 +170,6 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
             ref={windowRef}
             className={`container ${isFullScreen ? 'fullscreen' : ''}`}
             style={{ width: size.width, height: size.height, left: position.x, top: position.y }}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
         >
             <div
                 className="cmd-box"

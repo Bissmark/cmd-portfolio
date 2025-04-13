@@ -160,9 +160,9 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
                     )
                 )}
             </div>
-            <div className="resize-handle bottom-right" onMouseDown={(e) => handleMouseDown(e, "bottom-right")} />
             <div className="myComputer-footer">
                 <div>{Object.keys(ProjectFiles).length} items</div>
+                <div className="resize-handle bottom-right" onMouseDown={(e) => handleMouseDown(e, "bottom-right")} />
             </div>
         </div>
     );

@@ -21,18 +21,17 @@
     padding-left: 5px;
 }
 
-.myComputer-controls {
+/* .myComputer-controls {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0;
-}
+} */
 
 .control-btn {
     background: transparent;
     border: none;
     cursor: pointer;    
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: white;
     padding: 20px;
     transition: background-color 0.2s ease;
@@ -70,10 +69,13 @@
     flex-grow: 1;
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     background: #2b2929;
     padding: 10px;
     overflow-y: auto;
 }
+
+
 
 .myComputer-content a {
     display: flex;
@@ -89,7 +91,6 @@
     flex-direction: column;
     align-items: center;
     padding: 30px;
-    margin: 15px;
     color: white;
 }
 
@@ -111,8 +112,6 @@
 
 .resize-handle {
     position: absolute;
-    width: 10px;
-    height: 10px;
     background: transparent;
 }
 
@@ -130,14 +129,14 @@
     padding: 5px;
     background: #363434;
     font-size: 1rem;
+    height: 30px;
 }
 
 .bottom-right { 
     right: 0; 
     bottom: 0; 
-    cursor: nwse-resize; 
-    width: 15px; 
-    height: 15px; 
+    cursor: nwse-resize;
+    border: none;
 }
 
 .back-button-myComputer {
