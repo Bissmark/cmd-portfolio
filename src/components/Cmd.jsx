@@ -3,7 +3,7 @@ import { commands } from '../utilities/commands';
 import Draggable from 'react-draggable';
 import './Cmd.css';
 
-const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
+const Cmd = ({ onClose, registerProgram, unregisterProgram, bringToFront }) => {
     const [inputValue, setInputValue] = useState('');
     const [cmdHistory, setCmdHistory] = useState([
         {
@@ -76,11 +76,9 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
             setResizeDirection(null);
         };
 
-        // Attach listeners to window
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('mouseup', handleMouseUp);
 
-        // Cleanup
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseup', handleMouseUp);
@@ -177,6 +175,7 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
                 className="cmd-box"
                 onClick={_handleCmdClick}
                 onKeyDown={_handleKeyPressCmdPrompt}
+                onMouseDown={bringToFront}
                 tabIndex={0}
             >
                 <div className="top-box fixed-header">
@@ -249,6 +248,43 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
                                                     </div>
                                                 );
                                             })}
+                                        </div>
+                                    ) : cmd.output.type === 'contact' ? (
+                                        <div>
+                                            <p>You can contact me at: </p>
+                                            {cmd.output.data.map((item, idx) => (
+                                                <p key={idx}>
+                                                    {item.label}: {' '}
+                                                    {item.url ? (
+                                                        <a
+                                                            href={item.url}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            style={{ color: '#00ff00', textDecoration: 'underline' }}
+                                                        >
+                                                            {item.value}
+                                                        </a>
+                                                    ) : (
+                                                        item.value
+                                                    )}
+                                                </p>
+                                            ))}
+                                        </div>
+                                    ) : cmd.output.type == 'resume' ? (
+                                        <div>
+                                            {cmd.output.data.map((item, idx) => (
+                                                <p key={idx}>
+                                                    {item.label}: {' '}
+                                                    <a
+                                                        href={item.url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        style={{ color: '#00ff00', textDecoration: 'underline' }}
+                                                    >
+                                                        {item.value}
+                                                    </a>
+                                                </p>
+                                            ))}
                                         </div>
                                     ) : null}
                                 </div>

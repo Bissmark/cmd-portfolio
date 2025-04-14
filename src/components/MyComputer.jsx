@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { IoDocumentOutline } from "react-icons/io5";
 import ChromeImage from "../assets/images/Chrome.png";
 import FolderImage from "../assets/images/Folder.png";
 import Draggable from "react-draggable";
@@ -39,7 +38,7 @@ const ProjectFiles = {
 }
 
 
-const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
+const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront }) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
     const [size, setSize] = useState({ width: 1200, height: 800 });
     const [position, setPosition] = useState({ x: 100, y: 100 });
@@ -104,6 +103,11 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
         project.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    const logBringToFront = () => {
+        console.log("Bringing to front: My Computer");
+        bringToFront("My Computer");
+    }
+
     return (
         <Draggable
             handle=".myComputer-header"
@@ -119,9 +123,9 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
             className={`myComputer-window ${isFullScreen ? 'fullscreen' : ''}`}
             style={{ width: size.width, height: size.height }}
             onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp} 
+            onMouseUp={handleMouseUp}
         >
-            <div className="myComputer-header">
+            <div className="myComputer-header" onMouseDown={bringToFront}>
                 <span>{openedProject ? openedProject.name : "My Computer"}</span>
                 <div className="myComputer-controls">
                     <button className="control-btn min-btn">-</button>

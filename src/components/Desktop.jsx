@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ZIndexManager } from './ZIndexManager';
+import { useZIndexManager } from './ZIndexManager';
 import { FaRecycle } from "react-icons/fa";
 import Cmd from "./Cmd";
 import Footer from "./Footer";
@@ -50,22 +50,21 @@ const Desktop = () => {
     const [isMyComputerOpen, setIsMyComputerOpen] = useState(false);
     const [isCmdOpen, setIsCmdOpen] = useState(true);
     const [openPrograms, setOpenPrograms] = useState([]);
-
-    const { bringToFront, getZIndex } = ZIndexManager();
+    const { bringToFront, getZIndex } = useZIndexManager();
 
     const _openBrowser = () => {
         bringToFront("Browser");
-        setIsBrowserOpen(true);
+        if (!isBrowserOpen) setIsBrowserOpen(true);
     };
 
     const _openMyComputer = () => {
         bringToFront("My Computer");
-        setIsMyComputerOpen(true);
+        if (!isMyComputerOpen) setIsMyComputerOpen(true);
     };
 
     const _openCmd = () => {
         bringToFront("Powershell");
-        setIsCmdOpen(true);
+        if (!isCmdOpen) setIsCmdOpen(true);
     };
 
     const registerProgram = (program) => {
@@ -96,9 +95,11 @@ const Desktop = () => {
                     onMouseDown={() => bringToFront("Browser")}
                     style={{ position: 'absolute', zIndex: getZIndex("Browser") }}
                 >
-                    <Browser onClose={() => closeProgram("Browser", setIsBrowserOpen)} 
-                    registerProgram={registerProgram} 
-                    unregisterProgram={unregisterProgram} 
+                    <Browser 
+                        onClose={() => closeProgram("Browser", setIsBrowserOpen)} 
+                        registerProgram={registerProgram} 
+                        unregisterProgram={unregisterProgram}
+                        bringToFront={() => bringToFront("Browser")}
                     />
                 </div>
             )}
@@ -107,10 +108,12 @@ const Desktop = () => {
                     onMouseDown={() => bringToFront("My Computer")}
                     style={{ position: 'absolute', zIndex: getZIndex("My Computer") }}
                 >
-                    <MyComputer onClose={() => closeProgram("My Computer", setIsMyComputerOpen)} 
+                    <MyComputer 
+                        onClose={() => closeProgram("My Computer", setIsMyComputerOpen)} 
                         registerProgram={registerProgram} 
-                        unregisterProgram={unregisterProgram} 
-                        />
+                        unregisterProgram={unregisterProgram}
+                        bringToFront={() => bringToFront("My Computer")}
+                    />
                 </div>
             )}
 
@@ -119,9 +122,11 @@ const Desktop = () => {
                     onMouseDown={() => bringToFront("Powershell")}
                     style={{ position: 'absolute', zIndex: getZIndex("Powershell") }}
                 >
-                    <Cmd onClose={() => closeProgram("Poweershell", setIsCmdOpen)} 
-                    registerProgram={registerProgram} 
-                    unregisterProgram={unregisterProgram} 
+                    <Cmd 
+                        onClose={() => closeProgram("Poweershell", setIsCmdOpen)} 
+                        registerProgram={registerProgram} 
+                        unregisterProgram={unregisterProgram}
+                        bringToFront={() => bringToFront("Powershell")}
                     />
                 </div>
             )}

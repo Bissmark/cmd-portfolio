@@ -1,22 +1,25 @@
-import { useRef } from "react";
+import { useState } from 'react';
 
 let globalZIndex = 100;
 
-export const ZIndexManager = () => {
-    const zIndexRef = useRef({});
+export const useZIndexManager = () => {
+  const [zIndices, setZIndices] = useState({});
 
-    const getTopZIndex = () => ++globalZIndex;
+  const bringToFront = (key) => {
+    setZIndices((prev) => {
+      const newZIndices = { ...prev };
+      globalZIndex++;
+      newZIndices[key] = globalZIndex;
+      return newZIndices;
+    });
+  };
 
-    const bringToFront = (key) => {
-        zIndexRef.current[key] = getTopZIndex();
-    };
+  const getZIndex = (key) => {
+    return zIndices[key] || 0;
+  };
 
-    const getZIndex = (key) => {
-        return zIndexRef.current[key] || 0;
-    };
-
-    return {
-        bringToFront,
-        getZIndex,
-    };
+  return {
+    bringToFront,
+    getZIndex,
+  };
 };

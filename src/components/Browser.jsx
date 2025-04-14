@@ -57,7 +57,7 @@ const projectData = {
 };
 
 
-const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
+const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront }) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
     const [size, setSize] = useState({ width: 1200, height: 800 });
     const [position, setPosition] = useState({ x: 100, y: 100 });
@@ -286,7 +286,7 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
         >
-            <div className="browser-header">
+            <div className="browser-header" onMouseDown={bringToFront}>
                 <span>My Browser</span>
                 <div className="browser-controls">
                     <button className="control-btn-browser min-btn">-</button>
