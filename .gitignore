@@ -27,3 +27,5 @@ dist-ssr
 .github/workflows
 firebase.json
 .firebaserc
+.gitignore
+.eslintrc.cjs

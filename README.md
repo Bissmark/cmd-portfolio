@@ -23,11 +23,10 @@ I had an old portfolio which looked dated and didnt really feel like me, so I wa
 
 I could really go a bit crazy with it, but here are some ideas that I had for the future:
 
-- Enable Tooltips and Right Click
+- Enable tooltips and right click
 - Allow the user to change the background, also implement the old windows xp pipe screensaver (really loved seeing this as a kid)
-- Enable drag and drop (its not particularly necessary but would be fun to be able to move the windows around)
 - Flesh out the My Computer and Start Menu to be a bit more functional
-- Resolutions for Mobile (This is a tricky one because its definetly a portfolio build for a computer screen, but I think I can come up with some fun ideas to make it more visually appealing on a smaller screen)
+- Resolutions for mobile (This is a tricky one because its definetly a portfolio build for a computer screen, but I think I can come up with some fun ideas to make it more visually appealing on a smaller screen)
 
 ### Final Thoughts
 
