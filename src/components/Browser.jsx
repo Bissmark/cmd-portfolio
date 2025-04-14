@@ -4,6 +4,7 @@ import GeoWhereImage from "../assets/images/GeoWhere.png";
 import TrelloImage from "../assets/images/Trello.png";
 import ToDoImage from "../assets/images/To-Do-List.png";
 import MeImage from "../assets/images/Me.png";
+import Draggable from "react-draggable";
 import "./Browser.css";
 
 const projectData = {
@@ -120,21 +121,21 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
 
     const handleInputKeyDown = (e) => {
         if (e.key === "Enter") {
-            setPreviousUrl(url); // Save the current URL before navigating
-            setUrl(inputValue); // Navigate to the new URL
+            setPreviousUrl(url);
+            setUrl(inputValue);
         }
     };
 
     const navigateUrl = (newUrl) => {
         setPreviousUrl(url);
         setUrl(newUrl);
-        setInputValue(newUrl); // Sync input with the actual URL
+        setInputValue(newUrl);
     };
 
     const _handleBack = () => {
         if (previousUrl) {
             setUrl(previousUrl);
-            setInputValue(previousUrl); // Sync input when going back
+            setInputValue(previousUrl);
             setPreviousUrl(null);
         }
     };
@@ -269,10 +270,19 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
     }
 
     return (
+        <Draggable
+            handle=".browser-header"
+            position={position}
+            onDrag={(e, data) => {
+                setPosition({ x: data.x, y: data.y });
+            }}
+            bounds={{ left: 0, top: 0, right: window.innerWidth - size.width, bottom: window.innerHeight - size.height }}
+            disabled={isFullScreen}
+        >
         <div
             ref={windowRef}
             className={`browser-window ${isFullScreen ? "fullscreen" : ""}`}
-            style={{ width: size.width, height: size.height, left: position.x, top: position.y }}
+            style={{ width: size.width, height: size.height }}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
         >
@@ -300,6 +310,7 @@ const Browser = ({ onClose, registerProgram, unregisterProgram }) => {
 
             <div className="resize-handle bottom-right" onMouseDown={(e) => handleMouseDown(e, "bottom-right")} />
         </div>
+        </Draggable>
     );
 };
 

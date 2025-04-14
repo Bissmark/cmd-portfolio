@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { commands } from '../utilities/commands';
+import Draggable from 'react-draggable';
 import './Cmd.css';
 
 const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
@@ -86,12 +87,6 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
         };
     }, [resizing, resizeDirection, size, position]);
 
-
-    const handleMouseUp = () => {
-        setResizing(false);
-        setResizeDirection(null);
-    };
-
     const toggleFullScreen = () => {
         if (isFullScreen) {
             setSize({ width: prevSize.width, height: prevSize.height });
@@ -166,10 +161,17 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
     };
 
     return (
+        <Draggable 
+            handle=".fixed-header" 
+            position={position}
+            onDrag={(e, data) => setPosition({ x: data.x, y: data.y })}
+            bounds={{ left: 0, top: 0, right: window.innerWidth - size.width, bottom: window.innerHeight - size.height }}
+            disabled={isFullScreen}
+        >
         <div
             ref={windowRef}
             className={`container ${isFullScreen ? 'fullscreen' : ''}`}
-            style={{ width: size.width, height: size.height, left: position.x, top: position.y }}
+            style={{ width: size.width, height: size.height }}
         >
             <div
                 className="cmd-box"
@@ -275,6 +277,7 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram }) => {
                 />
             </div>
         </div>
+        </Draggable>
     );
 };
 

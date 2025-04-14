@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { IoDocumentOutline } from "react-icons/io5";
 import ChromeImage from "../assets/images/Chrome.png";
 import FolderImage from "../assets/images/Folder.png";
+import Draggable from "react-draggable";
 import './MyComputer.css';
 
 const ProjectFiles = {
@@ -104,10 +105,19 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
     );
 
     return (
+        <Draggable
+            handle=".myComputer-header"
+            position={position}
+            onDrag={(e, data) => {
+                setPosition({ x: data.x, y: data.y });
+            }}
+            bounds={{ left: 0, top: 0, right: window.innerWidth - size.width, bottom: window.innerHeight - size.height }}
+            disabled={isFullScreen}
+        >
         <div
             ref={windowRef}
             className={`myComputer-window ${isFullScreen ? 'fullscreen' : ''}`}
-            style={{ width: size.width, height: size.height, left: position.x, top: position.y }}
+            style={{ width: size.width, height: size.height }}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp} 
         >
@@ -165,6 +175,7 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram }) => {
                 <div className="resize-handle bottom-right" onMouseDown={(e) => handleMouseDown(e, "bottom-right")} />
             </div>
         </div>
+        </Draggable>
     );
 }
 
