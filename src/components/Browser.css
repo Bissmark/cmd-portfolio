@@ -35,7 +35,7 @@
     background: transparent;
     border: none;
     cursor: pointer;    
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: white;
     padding: 20px;
     transition: background-color 0.2s ease;
@@ -86,11 +86,9 @@
 .browser-content {
     flex-grow: 1;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
-    background: #2b2929;
-    padding: 10px;
     color: white;
+    height: 95%;
 }
 
 .browser-content h1 {
@@ -135,6 +133,7 @@
 .browser-box {
     flex: 1;
     padding: 10px;
+    height: 100%;
 }
 
 .contact {
@@ -158,11 +157,9 @@
 }
 
 .home-buttons {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    justify-content: center;
-    margin-top: 10px;
 }
 
 .home-buttons button {
@@ -186,4 +183,65 @@ img {
     width: 30px;
     height: 25px;
     cursor: nwse-resize;
+}
+
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 50px;
+    row-gap: 10px;
+}
+
+.projects-list p {
+    height: 200px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.skills-list img {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+}
+
+.skills-list p {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.about-me-skills {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 25px;
+}
+
+.about-me-games {
+    height: 280px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.about-me-fullstack {
+    height: 280px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.about-me-husband {
+    height: 280px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
 }

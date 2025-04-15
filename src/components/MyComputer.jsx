@@ -129,7 +129,7 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront 
                 <span>{openedProject ? openedProject.name : "My Computer"}</span>
                 <div className="myComputer-controls">
                     <button className="control-btn min-btn">-</button>
-                    <button className="control-btn max-btn" onClick={toggleFullScreen}>□</button>
+                    <button className="control-btn max-btn" style={{marginBottom: '5px'}} onClick={toggleFullScreen}>□</button>
                     <button className="control-btn close-btn" onClick={onClose}>X</button>
                 </div>
             </div>

@@ -4,6 +4,15 @@ import GeoWhereImage from "../assets/images/GeoWhere.png";
 import TrelloImage from "../assets/images/Trello.png";
 import ToDoImage from "../assets/images/To-Do-List.png";
 import MeImage from "../assets/images/Me.png";
+import CplusplusIcon from "../assets/icons/C++.png";
+import PythonIcon from "../assets/icons/Python.png";
+import ReactIcon from "../assets/icons/React.png";
+import CSSIcon from "../assets/icons/CSS.png";
+import HTMLIcon from "../assets/icons/HTML.png";
+import MongoDBIcon from "../assets/icons/MongoDB.png";
+import JavascriptIcon from "../assets/icons/JavaScript.png";
+import CSharpIcon from "../assets/icons/Csharp.webp";
+import ExpressIcon from "../assets/icons/Express.webp";
 import Draggable from "react-draggable";
 import "./Browser.css";
 
@@ -144,14 +153,16 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront }) 
         if (url === "projects") {
             return (
                 <div className="browser-content">
-                    <h2>Projects</h2>
-                    <ul>
-                        {Object.keys(projectData).map((projectKey) => (
-                            <li key={projectKey}>
-                                <button onClick={() => setUrl(projectKey)}>{projectData[projectKey].name}</button>
-                            </li>
-                        ))}
-                    </ul>
+                    <h1>Projects</h1>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <div className="projects-list">
+                            {Object.keys(projectData).map((projectKey) => (
+                                <p key={projectKey}>
+                                    <button onClick={() => setUrl(projectKey)}>{projectData[projectKey].name}</button>
+                                </p>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             );
         }
@@ -213,25 +224,45 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront }) 
         if (url === "home") {
             return (
                 <div className="browser-content">
-                    <h1 style={{marginBottom: "10px"}}>Welcome to the Browser portion of my portfolio!</h1>
-                    <p>There are multiple ways to view my portfolio, you can view my projects, about me, contact me and my resume using the start menu, the powershell (command prompt), My Computer or the Browser.</p>
-                    <p>Feel free to explore the different sections of my website.</p>
-                    <p>To navigate to the different pages you can type into the address bar similar to a normal browser, you can get to the about page, contact me page, projects page and skills page</p>
-                    <p>If you type the links into the address bar you need to either type: projects, skills, about or contact and then press enter</p>
-                    <div className="home-buttons">
-                        <button onClick={() => navigateUrl("about")}>About Me</button>
-                        <button onClick={() => navigateUrl("skills")}>My Skills</button>
-                        <button onClick={() => navigateUrl("projects")}>View Projects</button>
-                        <button onClick={() => navigateUrl("contact")}>Contact Me</button>
+                    <h1 style={{ marginBottom: "20px" }}>Welcome to the Browser portion of my portfolio!</h1>
+                    <div style={{ display: "flex", flexDirection: "row", flexGrow: 1 }}>
+                        <div style={{ width: "50%", paddingRight: "10px", display: "flex", flexDirection: "column" }}>
+                            <p>There are multiple ways to view my portfolio, you can view my projects, about me, contact me and my resume using the start menu, the powershell (command prompt), My Computer or the Browser.</p>
+                            <p>Feel free to explore the different sections of my website.</p>
+                            <p>To navigate to the different pages you can type into the address bar similar to a normal browser, you can get to the about page, contact me page, projects page and skills page</p>
+                            <p>If you type the links into the address bar you need to either type: projects, skills, about or contact and then press enter</p>
+                        </div>
+                        <div className="home-buttons" style={{ width: "50%" }}>
+                            <button onClick={() => navigateUrl("about")}>About Me</button>
+                            <button onClick={() => navigateUrl("skills")}>My Skills</button>
+                            <button onClick={() => navigateUrl("projects")}>View Projects</button>
+                            <button onClick={() => navigateUrl("contact")}>Contact Me</button>
+                        </div>
                     </div>
                 </div>
             );
         } else if (url === "about") {
             return (
                 <div className="browser-content">
+                    <h1 style={{marginBottom: '20px'}}>About Me</h1>
                     <p>I am a Sydney-based Junior Full-Stack Developer with a deep passion for technology and coding. I love learning different languages and frameworks. I thrive on problem-solving, working under pressure, and tackling challenges head-on. I enjoy collaborating with diverse teams, constantly learning, and bringing innovative ideas to life.</p>
                     <p>My journey in programming started in 2010 with game development, where I worked for two years before exploring different fields, including gardening and racehorse handling. These experiences taught me adaptability, perseverance, and the ability to take projects from concept to completion..</p>
                     <p>In my free time, I love playing a wide variety of video games—from platformers and RPGs to MMOs and soccer simulators. I'm also an avid reader of fantasy novels, enjoy cooking, and appreciate walking.</p>
+
+                    <div className="about-me-skills">
+                        <div className="about-me-games">
+                            <img src="" alt="" />
+                            <p>Games Programmer</p>
+                        </div>
+                        <div className="about-me-fullstack">
+                            <img src="" alt="" />
+                            <p>Fullstack Programmer</p>
+                        </div>
+                        <div className="about-me-husband">
+                            <img src="" alt="" />
+                            <p style={{width: '20px'}}>Loving Husband and Father</p>
+                        </div>
+                    </div>
                 </div>
             );
         } else if (url === "contact") {
@@ -249,21 +280,25 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront }) 
         } else if (url === "skills") {
             return (
                 <div className="browser-content">
-                    <p>Here are some of my skills:</p>
-                    <ul>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                        <li>React</li>
-                        <li>Node.js</li>
-                        <li>Express</li>
-                        <li>MongoDB</li>
-                        <li>Python</li>
-                        <li>Java</li>
-                        <li>C#</li>
-                        <li>Unity</li>
-                        <li>Git</li>
-                    </ul>
+                    <h1 style={{marginBottom: '20px'}}>Here are some of my skills:</h1>
+                    <div className="skills-list">
+                        <p>HTML <img src={HTMLIcon} alt="HTML Icon" /></p>
+                        <p>CSS<img src={CSSIcon} alt="CSS Icone" /></p>
+                        <p>JavaScript<img src={JavascriptIcon} alt="Javascript Icon" /></p>
+                        <p>Tailwind<img src={HTMLIcon} alt="Tailwind Icon" /></p>
+                        <p>Firebase<img src={HTMLIcon} alt="Firebase Icon" /></p>
+                        <p>Supabase<img src={HTMLIcon} alt="Supabase Icon" /></p>
+                        <p>React<img src={ReactIcon} alt="React Icon" /></p>
+                        <p>Express<img src={ExpressIcon} alt="Express Icon" /></p>
+                        <p>MongoDB<img src={MongoDBIcon} alt="MongoDB Icon" /></p>
+                        <p>Python<img src={PythonIcon} alt="Python Icon" /></p>
+                        <p>C#<img src={CSharpIcon} alt="C# Icon" /></p>
+                        <p>Unity<img src={HTMLIcon} alt="Unity Icon" /></p>
+                        <p>Git<img src={HTMLIcon} alt="Git Icon" /></p>
+                        <p>C++<img src={CplusplusIcon} alt="C++ Icon" /></p>
+                        <p>Raylib<img src={HTMLIcon} alt="Raylib Icon" /></p>
+                        <p>OpenGL<img src={HTMLIcon} alt="OpenGL Icon" /></p>
+                    </div>
                 </div>
             );
         }
@@ -290,7 +325,7 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront }) 
                 <span>My Browser</span>
                 <div className="browser-controls">
                     <button className="control-btn-browser min-btn">-</button>
-                    <button className="control-btn-browser max-btn" onClick={toggleFullScreen}>□</button>
+                    <button className="control-btn-browser max-btn" style={{marginBottom: '5px'}} onClick={toggleFullScreen}>□</button>
                     <button className="control-btn-browser close-btn" onClick={onClose}>X</button>
                 </div>
             </div>
