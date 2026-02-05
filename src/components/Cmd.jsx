@@ -272,6 +272,7 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram, bringToFront }) => {
                                         </div>
                                     ) : cmd.output.type == 'resume' ? (
                                         <div>
+                                            <p>You can find my resume at: </p>
                                             {cmd.output.data.map((item, idx) => (
                                                 <p key={idx}>
                                                     {item.label}: {' '}
@@ -281,7 +282,7 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram, bringToFront }) => {
                                                         rel="noopener noreferrer"
                                                         style={{ color: '#00ff00', textDecoration: 'underline' }}
                                                     >
-                                                        {item.value}
+                                                        Christopher Holt Resume
                                                     </a>
                                                 </p>
                                             ))}

@@ -3,8 +3,8 @@ import './StartMenu.css';
 
 const StartMenu = ({ isVisible, onClose }) => {
     const [selectedItem, setSelectedItem] = useState(null);
+    const [hoveredItem, setHoveredItem] = useState(null);
     const menuRef = useRef(null);
-
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -24,77 +24,189 @@ const StartMenu = ({ isVisible, onClose }) => {
         };
     }, [isVisible, onClose]);
 
-    const renderRightSide = () => {
-        switch (selectedItem) {
+    // Reset selection when menu closes
+    useEffect(() => {
+        if (!isVisible) {
+            setSelectedItem(null);
+            setHoveredItem(null);
+        }
+    }, [isVisible]);
+
+    const menuItems = [
+        { id: 'about', icon: '👤', title: 'About Me', subtitle: 'Learn about me' },
+        { id: 'projects', icon: '📁', title: 'My Projects', subtitle: 'View my portfolio' },
+        { id: 'skills', icon: '⚡', title: 'Skills', subtitle: 'Technologies I use' },
+        { id: 'contact', icon: '📧', title: 'Contact Me', subtitle: 'Get in touch' },
+    ];
+
+    const placesItems = [
+        { id: 'documents', icon: '📄', title: 'My Documents' },
+        { id: 'pictures', icon: '🖼️', title: 'My Pictures' },
+        { id: 'music', icon: '🎵', title: 'My Music' },
+        { id: 'computer', icon: '💻', title: 'My Computer' },
+    ];
+
+    const getDetailContent = () => {
+        const item = selectedItem || hoveredItem;
+        
+        switch (item) {
             case 'about':
                 return (
-                    <div style={{display: 'flex', flexDirection: 'column'}}>
-                        <h2>About Me</h2>
-                        <p>I am a Sydney-based Junior Full-Stack Developer with a deep passion for technology and coding. I love learning different languages and frameworks. I thrive on problem-solving, working under pressure, and tackling challenges head-on. I enjoy collaborating with diverse teams, constantly learning, and bringing innovative ideas to life.</p>
-                        <p>My journey in programming started in 2010 with game development, where I worked for two years before exploring different fields, including gardening and racehorse handling. These experiences taught me adaptability, perseverance, and the ability to take projects from concept to completion..</p>
-                        <p>In my free time, I love playing a wide variety of video games—from platformers and RPGs to MMOs and soccer simulators. I'm also an avid reader of fantasy novels, enjoy cooking, and appreciate walking.</p>
+                    <div>
+                        <h3>👤 About Me</h3>
+                        <p>I am a Sydney-based Junior Full-Stack Developer with a deep passion for technology and coding.</p>
+                        <p>I love learning different languages and frameworks. I thrive on problem-solving, working under pressure, and tackling challenges head-on.</p>
+                        <p>My journey in programming started in 2010 with game development, where I worked for two years before exploring different fields.</p>
                     </div>
-                )
+                );
             case 'projects':
                 return (
-                    <div style={{display: 'flex', flexDirection: 'column'}}>
-                        <h2>Projects</h2>
+                    <div>
+                        <h3>📁 My Projects</h3>
                         <ul>
                             <li>Ceege Crypto</li>
                             <li>GeoWhere</li>
-                            <li>Trello</li>
+                            <li>Trello Clone</li>
                             <li>Snake Raylib</li>
                             <li>Bullet Fun</li>
                             <li>To-Do List</li>
                         </ul>
+                        <p style={{ fontStyle: 'italic', marginTop: '10px' }}>
+                            Double-click My Computer to explore!
+                        </p>
                     </div>
-                )
+                );
             case 'skills':
                 return (
-                    <div className='start-menu-skills' style={{display: 'flex', flexDirection: 'column'}}>
-                        <h2>Skills</h2>
+                    <div>
+                        <h3>⚡ Skills</h3>
                         <ul>
-                            <li>JavaScript</li>
-                            <li>React</li>
-                            <li>Node.js</li>
-                            <li>Express.js</li>
-                            <li>C++</li>
-                            <li>C#</li>
-                            <li>Unity</li>
+                            <li>JavaScript / React</li>
+                            <li>Node.js / Express</li>
+                            <li>C++ / C#</li>
+                            <li>Unity Game Engine</li>
                             <li>Python</li>
                             <li>MongoDB</li>
                         </ul>
                     </div>
-                )
+                );
             case 'contact':
                 return (
-                    <div className='start-menu-contact' style={{display: 'flex', flexDirection: 'column'}}>
-                        <h2>You can contact me at:</h2>
-                        <p>Email: <span style={{fontSize: '1rem'}}>holt.christopher1@gmail.com</span></p>
-                        <p>Phone: <span style={{fontSize: '1rem'}}>0408 469 577</span></p>
-                        <p>Github: <span style={{fontSize: '1rem'}}><a href="https://github.com/Bissmark" target="_blank">https://github.com/Bissmark</a></span></p>
+                    <div>
+                        <h3>📧 Contact Me</h3>
+                        <p><strong>Email:</strong><br/>holt.christopher1@gmail.com</p>
+                        <p><strong>Phone:</strong><br/>0408 469 577</p>
+                        <p><strong>GitHub:</strong><br/>
+                            <a href="https://github.com/Bissmark" target="_blank" rel="noopener noreferrer">
+                                github.com/Bissmark
+                            </a>
+                        </p>
                     </div>
-                )
+                );
             default:
-                return null;
+                return (
+                    <div>
+                        <h3>Welcome</h3>
+                        <p>Select an item from the menu to learn more about me and my work.</p>
+                    </div>
+                );
         }
-    }
+    };
+
+    const handleItemClick = (itemId) => {
+        setSelectedItem(itemId);
+    };
 
     return (
         <div ref={menuRef} className={`start-menu ${isVisible ? 'visible' : 'hidden'}`}>
-            <div style={{display: 'flex', height: '100%'}}>
-                <div className='start-menu-leftside'>
-                    <h2 onClick={() => setSelectedItem('about')}>About Me</h2>
-                    <h2 onClick={() => setSelectedItem('projects')}>Projects</h2>
-                    <h2 onClick={() => setSelectedItem('skills')}>Skills</h2>
-                    <h2 onClick={() => setSelectedItem('contact')}>Contact Me</h2>
+            {/* User Profile Header */}
+            <div className="start-menu-header">
+                <div className="user-avatar">👨‍💻</div>
+                <span className="user-name">Christopher Holt</span>
+                <button className="footer-btn" onClick={onClose}><span className="footer-btn-icon">🔓</span>
+                    Log Off
+                </button>    
+                <button className="footer-btn" onClick={onClose}>
+                    <span className="footer-btn-icon">⏻</span>
+                    Turn Off Computer
+                </button>
+            </div>
+
+            {/* Main Content */}
+            <div className="start-menu-content">
+                {/* Left Side - Programs (White) */}
+                <div className="start-menu-leftside">
+                    <div className="programs-section">
+                        {/* Pinned Programs */}
+                        {menuItems.map((item) => (
+                            <div
+                                key={item.id}
+                                className={`menu-item ${selectedItem === item.id ? 'selected' : ''}`}
+                                onClick={() => handleItemClick(item.id)}
+                                onMouseEnter={() => setHoveredItem(item.id)}
+                                onMouseLeave={() => setHoveredItem(null)}
+                            >
+                                <div className="menu-item-icon">{item.icon}</div>
+                                <div className="menu-item-text">
+                                    <span className="menu-item-title">{item.title}</span>
+                                    <span className="menu-item-subtitle">{item.subtitle}</span>
+                                </div>
+                            </div>
+                        ))}
+                        
+                        <div className="menu-separator" />
+                        
+                        {/* Recent Programs */}
+                        <div className="recent-programs">
+                            <div className="recent-label">Recently Used</div>
+                            <div 
+                                className="menu-item"
+                                onMouseEnter={() => setHoveredItem(null)}
+                            >
+                                <div className="menu-item-icon">🌐</div>
+                                <div className="menu-item-text">
+                                    <span className="menu-item-title">Internet Explorer</span>
+                                </div>
+                            </div>
+                            <div 
+                                className="menu-item"
+                                onMouseEnter={() => setHoveredItem(null)}
+                            >
+                                <div className="menu-item-icon">📝</div>
+                                <div className="menu-item-text">
+                                    <span className="menu-item-title">Notepad</span>
+                                </div>
+                            </div>
+                            <div 
+                                className="menu-item"
+                                onMouseEnter={() => setHoveredItem(null)}
+                            >
+                                <div className="menu-item-icon">🎨</div>
+                                <div className="menu-item-text">
+                                    <span className="menu-item-title">Paint</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* All Programs */}
+                    <div className="all-programs">
+                        All Programs
+                        <span className="all-programs-arrow">▶</span>
+                    </div>
                 </div>
-                <div className='start-menu-rightside'>
-                    {renderRightSide()}
+
+                {/* Right Side - Places (Blue) */}
+                <div className="start-menu-rightside">
+                    {/* Detail Panel */}
+                    <div className="detail-panel">
+                        {getDetailContent()}
+                    </div>
                 </div>
             </div>
+            
         </div>
     );
-}
+};
 
 export default StartMenu;

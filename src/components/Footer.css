@@ -1,61 +1,209 @@
+/* Windows 10 Taskbar Style */
 .footer {
-    background-color: #333;
+    background-color: #1a1a1a;
+    /* Alternative: Use transparency effect like real Win10 */
+    /* background-color: rgba(26, 26, 26, 0.95); */
+    /* backdrop-filter: blur(20px); */
     color: white;
     text-align: center;
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
+    height: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    z-index: 9998;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .taskbar {
-    display: flex;;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
-.footer .time-date {
-    font-size: 0.5em;
-    text-align: right;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-right: 5px;
+/* Start Button */
+.start-menu-button {
+    display: flex;
+    height: 20px;
+    width: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+    padding: 15px;
+}
+
+.start-menu-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.start-menu-button:active {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Taskbar Icons */
+.taskbar-icon {
+    height: 25px;
+    width: 25px;
+    padding: 0 13px 0 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+    position: relative;
+}
+
+.taskbar-icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.taskbar-icon:active {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Active indicator - Windows 10 style underline */
+.taskbar-icon::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 3px;
+    background-color: #0078d4;
+    border-radius: 2px 2px 0 0;
+}
+
+.taskbar-icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Separator between pinned and running apps */
+.taskbar-separator {
+    width: 1px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 4px;
+}
+
+/* System Tray Area */
+.time-date {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    text-align: center;
+    padding: 4px 12px;
+    color: white;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: background-color 0.1s ease;
+}
+
+.time-date:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .time-date p {
     margin: 0;
     padding: 0;
+    line-height: 1.4;
 }
 
-.start-menu-button {
+/* Show Desktop Button (far right) */
+.show-desktop-btn {
+    width: 6px;
+    height: 100%;
+    background: transparent;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+.show-desktop-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Notification Area Icons */
+.system-tray {
     display: flex;
-    height: 25px;
     align-items: center;
-    padding: 15px;
-}
-
-.start-menu-button:hover {
-    background-color: #555;
-    color: rgb(55, 188, 229);
-}
-
-.taskbar-icon {
     height: 100%;
     padding: 0 8px;
-    display: flex;
-    align-items: center;
 }
 
-.taskbar-icon {
+.tray-icon {
+    width: 32px;
+    height: 40px;
     display: flex;
     align-items: center;
-    height: 25px;
-    padding: 15px;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.1s ease;
 }
 
-.taskbar-icon:hover {
-    background-color: #555;
-    color: rgb(55, 188, 229);
+.tray-icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Search Box (optional - Windows 10 style) */
+.taskbar-search {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 4px 12px;
+    margin-left: 8px;
+    height: 28px;
+    min-width: 200px;
+    cursor: text;
+}
+
+.taskbar-search:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.taskbar-search-icon {
+    font-size: 14px;
+    margin-right: 8px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.taskbar-search input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    width: 100%;
+}
+
+.taskbar-search input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Action Center Button */
+.action-center-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+.action-center-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }

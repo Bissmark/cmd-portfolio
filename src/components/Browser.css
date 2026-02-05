@@ -1,11 +1,17 @@
+/* Windows 10 Edge/Browser Style */
 .browser-window {
     position: absolute;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    background: #ffffff;
+    border: 1px solid #2b2b2b;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
     resize: both;
     overflow: hidden;
-    background: #2b2929;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    border-radius: 0;
 }
 
 .fullscreen {
@@ -13,235 +19,606 @@
     height: 100vh !important;
     left: 0 !important;
     top: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
+/* Title Bar - Windows 10 Style */
 .browser-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #2b2929;
-    color: white;
+    background: #ffffff;
+    color: #1a1a1a;
     cursor: move;
     flex-shrink: 0;
-    height: 50px;
-    padding-left: 5px;
+    height: 32px;
+    padding: 0 0 0 12px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.browser-header span {
+    font-weight: 400;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1a1a1a;
+}
+
+.browser-header-icon {
+    font-size: 14px;
 }
 
 .browser-controls {
     display: flex;
+    height: 100%;
 }
 
+/* Windows 10 Window Buttons */
 .control-btn-browser {
+    width: 46px;
+    height: 32px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 400;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: transparent;
+    transition: background-color 0.1s ease;
+}
+
+.min-btn {
+    padding: 0 0 13px 0;
+}
+
+.min-btn:hover {
+    background: #e5e5e5;
+}
+
+.max-btn:hover {
+    background: #e5e5e5;
+}
+
+.close-btn:hover {
+    background: #e81123;
+    color: white;
+}
+
+.control-btn-browser:active {
+    opacity: 0.7;
+}
+
+/* Tab Bar (new for Win10 style) */
+.browser-menu-bar {
+    display: none; /* Hide XP-style menu bar */
+}
+
+/* Toolbar - Windows 10 Edge Style */
+.browser-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background: #f3f3f3;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.toolbar-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
     background: transparent;
     border: none;
-    cursor: pointer;    
-    font-size: 1rem;
-    color: white;
-    padding: 20px;
-    transition: background-color 0.2s ease;
-}
-.control-btn-browser:hover {
-    background: #bbb;
-}
-
-.control-btn-browser.close-btn {
-    color: grey;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #1a1a1a;
+    min-width: 36px;
+    height: 36px;
+    transition: background-color 0.1s ease;
 }
 
+.toolbar-btn:hover {
+    background: #e5e5e5;
+}
+
+.toolbar-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.toolbar-btn:disabled:hover {
+    background: transparent;
+}
+
+.toolbar-btn-icon {
+    font-size: 16px;
+}
+
+/* Hide text labels in Win10 style - icons only */
+.toolbar-btn {
+    flex-direction: column;
+    font-size: 0;
+}
+
+.toolbar-btn .toolbar-btn-icon {
+    font-size: 16px;
+}
+
+.toolbar-separator {
+    width: 1px;
+    height: 24px;
+    background: #d1d1d1;
+    margin: 0 8px;
+}
+
+/* Address Bar - Windows 10 Style */
 .browser-url-bar {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    height: 50px;
-    padding: 5px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background: #2b2929;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #f3f3f3;
+    border-bottom: 1px solid #e5e5e5;
     flex-shrink: 0;
 }
 
+.address-label {
+    display: none; /* Hide label in Win10 style */
+}
+
+.address-bar-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    padding: 6px 12px;
+    height: 32px;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.address-bar-container:focus-within {
+    border-color: #0078d4;
+    box-shadow: 0 0 0 1px #0078d4;
+}
+
+.address-bar-icon {
+    font-size: 14px;
+    margin-right: 8px;
+    color: #666;
+}
+
 .browser-url-bar input {
-    height: 30px;
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    margin-left: 5px;
-}
-
-.back-button {
-    background: none;
+    flex: 1;
     border: none;
-    cursor: pointer;
-    padding: 5px;
-    color: white;
-    font-size: 2rem;
-    margin-bottom: 15px;
+    outline: none;
+    font-size: 13px;
+    font-family: 'Segoe UI', sans-serif;
+    background: transparent;
+    height: 100%;
+    color: #1a1a1a;
 }
 
-.back-button.disabled {
-    color: grey;
-    cursor: not-allowed;
+.browser-url-bar input::placeholder {
+    color: #767676;
+}
+
+.go-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0 16px;
+    background: #0078d4;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    height: 32px;
+    color: white;
+    font-weight: 500;
+    transition: background-color 0.1s ease;
+}
+
+.go-btn:hover {
+    background: #106ebe;
+}
+
+.go-btn:active {
+    background: #005a9e;
+}
+
+.links-label {
+    display: none;
+}
+
+/* Browser Content Area */
+.browser-box {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .browser-content {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    color: white;
-    height: 95%;
+    background: white;
+    color: #1a1a1a;
+    padding: 24px;
+    overflow-y: auto;
 }
 
 .browser-content h1 {
-    text-align: center;
-    font-size: 2rem;
-    color: white;
+    flex: 1;
+    font-size: 28px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 16px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #0078d4;
 }
 
 .browser-content h2 {
-    font-size: 1.5rem;
-    text-align: center;
-    margin: 5px;
-    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 20px 0 12px 0;
 }
 
 .browser-content p {
-    font-size: 1rem;
-    margin: 5px;
-    color: white;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 10px 0;
+    color: #444;
 }
 
-.browser-content button {
-    background: #2b2929;
-    color: white;
-    border: 1px solid #ccc;
-    padding: 5px;
-    cursor: pointer;
-    font-size: 1rem;
+.browser-content a {
+    color: #0078d4;
+    text-decoration: none;
 }
 
-.browser-content button:hover {
-    background: #444;
+.browser-content a:hover {
+    text-decoration: underline;
 }
 
-.browser-content-contact {
-    display: flex;
-    justify-content:  space-around;
-    align-items: center;
-    height: 100%;
+.browser-content a:visited {
+    color: #5c2d91;
 }
 
-.browser-box {
-    flex: 1;
-    padding: 10px;
-    height: 100%;
-}
-
-.contact {
-    border: 1px solid #ccc;
-    color: white;
-    padding: 5px;
-}
-
-.browser-footer {
-    flex-shrink: 0;
-    border-top: 1px solid #ccc;
-    color: white;
-    padding: 0;
-}
-
-.browser-footer p {
-    margin: 0;
-    padding: 5px;
-    font-size: 1rem;
-    color: white;
-}
-
+/* Home Page Buttons - Windows 10 Style */
 .home-buttons {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 12px;
+    margin-top: 20px;
 }
 
 .home-buttons button {
-    font-size: 1rem;
+    padding: 16px 20px;
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #1a1a1a;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.15s ease;
 }
 
+.home-buttons button:hover {
+    background: #e8f4fc;
+    border-color: #0078d4;
+}
+
+.home-buttons button:active {
+    background: #cce4f7;
+}
+
+.btn-icon {
+    font-size: 28px;
+}
+
+/* Projects List - Windows 10 Cards */
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.project-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.project-card:hover {
+    border-color: #0078d4;
+    box-shadow: 0 4px 12px rgba(0, 120, 212, 0.15);
+    transform: translateY(-2px);
+}
+
+.project-card h3 {
+    margin: 0 0 8px 0;
+    color: #1a1a1a;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.project-card p {
+    margin: 0;
+    font-size: 13px;
+    color: #666;
+}
+
+/* Project Detail Page */
+.project-detail {
+    text-align: center;
+}
+
+.project-image {
+    max-width: 100%;
+    max-height: 300px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.project-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.project-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #0078d4;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.15s ease;
+}
+
+.project-links a:hover {
+    background: #106ebe;
+    color: white;
+    text-decoration: none;
+}
+
+.project-links a:visited {
+    color: white;
+}
+
+/* Skills List - Windows 10 Style */
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+}
+
+.skill-item:hover {
+    background: #e8f4fc;
+    border-color: #0078d4;
+}
+
+.skill-item img {
+    width: 24px;
+    height: 24px;
+}
+
+.skill-icon {
+    font-size: 24px;
+}
+
+.skill-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* Contact Section */
+.browser-content-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 32px;
+    background: white;
+    flex-grow: 1;
+}
+
+.contact-card {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 28px;
+    min-width: 320px;
+}
+
+.contact-card h2 {
+    margin: 0 0 20px 0;
+    color: #1a1a1a;
+    border-bottom: 2px solid #0078d4;
+    padding-bottom: 12px;
+    font-size: 20px;
+}
+
+.contact-card p {
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+.contact-card a {
+    color: #0078d4;
+}
+
+.contact-image {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 4px solid #0078d4;
+    object-fit: cover;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* About Me Section */
+.about-me-skills {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 28px;
+}
+
+.about-card {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    width: 200px;
+    transition: all 0.15s ease;
+}
+
+.about-card:hover {
+    border-color: #0078d4;
+    box-shadow: 0 4px 16px rgba(0, 120, 212, 0.12);
+    transform: translateY(-2px);
+}
+
+.about-card-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+
+.about-card p {
+    margin: 0;
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: 14px;
+}
+
+/* Status Bar / Footer - Hidden in Win10 Edge style */
+.browser-footer {
+    display: none;
+}
+
+/* Resize Handle */
 .resize-handle {
     position: absolute;
-    width: 30px;
-    height: 30px;
     background: transparent;
-}
-
-img {
-    height: 136px;
 }
 
 .bottom-right { 
     right: 0; 
-    bottom: 0;
-    width: 30px;
-    height: 25px;
+    bottom: 0; 
+    width: 16px;
+    height: 16px;
     cursor: nwse-resize;
 }
 
-.projects-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 50px;
-    row-gap: 10px;
+/* Scrollbar Windows 10 Style */
+.browser-content::-webkit-scrollbar {
+    width: 10px;
 }
 
-.projects-list p {
-    height: 200px;
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    margin-right: 5px;
+.browser-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
 }
 
-.skills-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.browser-content::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 5px;
 }
 
-.skills-list img {
-    width: 50px;
-    height: 50px;
-    margin: 5px;
+.browser-content::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
 }
 
-.skills-list p {
+.welcome-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.welcome-header h1 {
+  font-size: 42px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* Welcome/Home page styling */
+.welcome-section {
     display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    padding: 5px;
-    margin-left: 5px;
+    gap: 24px;
+    margin-top: 20px;
 }
 
-.about-me-skills {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    gap: 25px;
+.browser h1 {
+    text-align: center;
 }
 
-.about-me-games {
-    height: 280px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+.welcome-text {
+    flex: 1;
 }
 
-.about-me-fullstack {
-    height: 280px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+.welcome-nav {
+    flex: 1;
 }
 
-.about-me-husband {
-    height: 280px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .skills-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .projects-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .home-buttons {
+        grid-template-columns: 1fr;
+    }
 }

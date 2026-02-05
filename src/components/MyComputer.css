@@ -1,149 +1,491 @@
+/* Windows 10 File Explorer Style */
 .myComputer-window {
     position: absolute;
-    background: white;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    background: #ffffff;
+    border: 1px solid #2b2b2b;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
     resize: both;
     overflow: hidden;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
 }
 
+.myComputer-window.fullscreen {
+    border: none;
+    box-shadow: none;
+}
+
+/* Title Bar - Windows 10 Style */
 .myComputer-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #2b2929;
-    color: white;
+    background: #ffffff;
+    color: #1a1a1a;
     cursor: move;
     flex-shrink: 0;
-    height: 50px;
-    padding-left: 5px;
+    height: 32px;
+    padding: 0 0 0 12px;
+    border-bottom: 1px solid #e5e5e5;
 }
 
-/* .myComputer-controls {
+.myComputer-header span {
+    font-weight: 400;
+    font-size: 12px;
     display: flex;
-    justify-content: center;
     align-items: center;
-} */
+    gap: 8px;
+}
 
+.myComputer-header-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.myComputer-controls {
+    display: flex;
+    height: 100%;
+}
+
+/* Windows 10 Window Buttons */
 .control-btn {
-    background: transparent;
+    width: 46px;
+    height: 32px;
     border: none;
-    cursor: pointer;    
-    font-size: 1rem;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 400;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: transparent;
+    transition: background-color 0.1s ease;
+}
+
+.min-btn {
+    padding: 0 0 13px 0;
+}
+
+.min-btn:hover {
+    background: #e5e5e5;
+}
+
+.max-btn:hover {
+    background: #e5e5e5;
+}
+
+.close-btn:hover {
+    background: #e81123;
     color: white;
-    padding: 20px;
-    transition: background-color 0.2s ease;
 }
 
-.close-btn:hover { 
-    background-color: red;
-
-}
-.min-btn:hover { 
-    background-color: rgba(0, 0, 0, 0.3);
-}
-.max-btn:hover { 
-    background-color: rgba(0, 0, 0, 0.3);
+.control-btn:active {
+    opacity: 0.7;
 }
 
+/* Ribbon / Menu Bar - Windows 10 Style */
+.myComputer-menu-bar {
+    display: flex;
+    gap: 0;
+    padding: 0;
+    background: #f3f3f3;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.menu-item {
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #1a1a1a;
+    transition: background-color 0.1s ease;
+}
+
+.menu-item:hover {
+    background: #e5e5e5;
+}
+
+/* Toolbar - Windows 10 File Explorer Style */
+.myComputer-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background: #f3f3f3;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.toolbar-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #1a1a1a;
+    transition: all 0.1s ease;
+}
+
+.toolbar-btn:hover {
+    background: #e5e5e5;
+    border-color: #c5c5c5;
+}
+
+.toolbar-btn img {
+    width: 16px;
+    height: 16px;
+}
+
+.toolbar-separator {
+    width: 1px;
+    height: 24px;
+    background: #d1d1d1;
+    margin: 0 8px;
+}
+
+/* Address Bar - Windows 10 Style */
 .myComputer-url-bar {
-    height: 50px;
-    padding: 5px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background: #2b2929;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
     flex-shrink: 0;
+}
+
+.address-label {
+    display: none;
+}
+
+.address-bar-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    padding: 4px 10px;
+    height: 28px;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease;
+}
+
+.address-bar-container:focus-within {
+    border-color: #0078d4;
+}
+
+.address-bar-container img {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
 }
 
 .myComputer-url-bar input {
-    height: 60%;
-    width: 98%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    background-color: white;
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    background: transparent;
+    color: #1a1a1a;
 }
 
+.go-btn {
+    padding: 4px 12px;
+    background: transparent;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #1a1a1a;
+    transition: all 0.1s ease;
+}
+
+.go-btn:hover {
+    background: #e5e5e5;
+    border-color: #0078d4;
+}
+
+/* Main Content Area */
+.myComputer-main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Navigation Pane - Windows 10 Style */
+.myComputer-sidebar {
+    width: 220px;
+    background: #ffffff;
+    border-right: 1px solid #e5e5e5;
+    padding: 0;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.sidebar-section {
+    background: transparent;
+    border: none;
+    margin-bottom: 0;
+    overflow: hidden;
+}
+
+.sidebar-header {
+    background: transparent;
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #1a1a1a;
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.sidebar-header:hover {
+    background: #e8f4fc;
+}
+
+.sidebar-header img {
+    width: 16px;
+    height: 16px;
+}
+
+.sidebar-content {
+    padding: 0;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px 8px 32px;
+    color: #1a1a1a;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.1s ease;
+}
+
+.sidebar-link:hover {
+    background: #e8f4fc;
+}
+
+.sidebar-link img {
+    width: 16px;
+    height: 16px;
+}
+
+/* File Content Area */
 .myComputer-content {
     flex-grow: 1;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    background: #2b2929;
-    padding: 10px;
+    background: #ffffff;
+    padding: 12px;
     overflow-y: auto;
-}
-
-
-
-.myComputer-content a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: white;
+    gap: 4px;
 }
 
 .file {
     display: flex;
-    cursor: default;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
-    color: white;
+    padding: 8px;
+    width: 90px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: all 0.1s ease;
 }
 
 .file:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+    background: #e8f4fc;
+    border-color: #cce4f7;
 }
 
-.document-icon {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
+.file.selected {
+    background: #cce4f7;
+    border-color: #0078d4;
 }
 
-.document-icon-folder {
-    width: 50px;
-    height: 70px;
-    margin-bottom: 10px;
+.file.selected .file-name {
+    color: #1a1a1a;
+    background: transparent;
 }
 
+.file-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 6px;
+}
+
+.file-name {
+    font-size: 12px;
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 80px;
+    color: #1a1a1a;
+    padding: 2px 4px;
+    line-height: 1.3;
+}
+
+/* Section Headers in content */
+.content-section {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.content-section-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.content-section-header img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.files-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+/* Folder View */
+.folder-view {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    width: 100%;
+}
+
+/* Status Bar - Windows 10 Style */
+.myComputer-footer {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    align-items: center;
+    color: #666;
+    padding: 4px 12px;
+    background: #f3f3f3;
+    border-top: 1px solid #e5e5e5;
+    font-size: 11px;
+    height: 24px;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer-section {
+    padding: 0;
+    border-right: none;
+    color: #666;
+}
+
+/* Resize Handle */
 .resize-handle {
     position: absolute;
     background: transparent;
 }
 
-.folder-view {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.myComputer-footer {
-    display: flex;
-    flex-shrink: 0;
-    justify-content: space-between;
-    color: white;
-    padding: 5px;
-    background: #363434;
-    font-size: 1rem;
-    height: 30px;
-}
-
 .bottom-right { 
     right: 0; 
     bottom: 0; 
+    width: 16px;
+    height: 16px;
     cursor: nwse-resize;
-    border: none;
 }
 
+/* Back Button */
 .back-button-myComputer {
-    background: none;
-    border: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 18px;
-    padding: 5px;
-    color: white;
+    font-size: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #1a1a1a;
+    transition: all 0.1s ease;
+}
+
+.back-button-myComputer:hover {
+    background: #e5e5e5;
+    border-color: #c5c5c5;
+}
+
+.back-button-myComputer:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.back-button-myComputer:disabled:hover {
+    background: transparent;
+    border-color: transparent;
+}
+
+/* Links inside files */
+.file a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* No results text */
+.no-files {
+    color: #666;
+    font-style: italic;
+    padding: 24px;
+    font-size: 14px;
+}
+
+/* Scrollbar Windows 10 Style */
+.myComputer-content::-webkit-scrollbar,
+.myComputer-sidebar::-webkit-scrollbar {
+    width: 10px;
+}
+
+.myComputer-content::-webkit-scrollbar-track,
+.myComputer-sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.myComputer-content::-webkit-scrollbar-thumb,
+.myComputer-sidebar::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 5px;
+}
+
+.myComputer-content::-webkit-scrollbar-thumb:hover,
+.myComputer-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
 }

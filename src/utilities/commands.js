@@ -14,23 +14,23 @@ const projects = [
     {
         name: 'Trello',
         github: 'https://github.com/Bissmark/trello',
-        live: 'https://ceegecrypto.firebaseapp.com/',
+        live: 'https://trello-frontend-q3pp.onrender.com/',
     },
-    {
-        name: 'SnakeRaylib',
-        github: 'https://github.com/Bissmark/Crypto-Page',
-        live: 'https://ceegecrypto.firebaseapp.com/',
-    },
-    {
-        name: 'BulletFun',
-        github: 'https://github.com/Bissmark/bulletFun',
-        live: 'https://ceegecrypto.firebaseapp.com/',
-    },
-    {
-        name: 'To-Do List',
-        github: 'https://github.com/Bissmark/School-Notes-V2',
-        live: 'https://school-notes-backend.onrender.com/',
-    },
+    // {
+    //     name: 'SnakeRaylib',
+    //     github: 'https://github.com/Bissmark/Crypto-Page',
+    //     live: 'https://ceegecrypto.firebaseapp.com/',
+    // },
+    // {
+    //     name: 'BulletFun',
+    //     github: 'https://github.com/Bissmark/bulletFun',
+    //     live: 'https://ceegecrypto.firebaseapp.com/',
+    // },
+    // {
+    //     name: 'To-Do List',
+    //     github: 'https://github.com/Bissmark/School-Notes-V2',
+    //     live: 'https://school-notes-backend.onrender.com/',
+    // },
 ];
 
 export const commands = {
