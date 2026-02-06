@@ -42,11 +42,12 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram, bringToFront }) => {
         };
     }, []);
 
+    // Auto-scroll to bottom when new command is added
     useEffect(() => {
         if (contentRef.current) {
-            contentRef.current.scrollTop = 0;
+            contentRef.current.scrollTop = contentRef.current.scrollHeight;
         }
-    }, []);
+    }, [cmdHistory]);
 
     const handleMouseDown = (e, direction) => {
         setResizing(true);

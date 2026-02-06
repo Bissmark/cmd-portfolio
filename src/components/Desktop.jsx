@@ -5,6 +5,7 @@ import Cmd from "./Cmd";
 import Footer from "./Footer";
 import Browser from './Browser';
 import MyComputer from './MyComputer';
+import GameWindow from './GameWindow';
 import ChromeImage from '../assets/images/Chrome.png';
 import FolderImage from '../assets/images/Folder.png';
 import PowershellImage from '../assets/images/Powershell.png';
@@ -50,6 +51,7 @@ const Desktop = () => {
     const [isMyComputerOpen, setIsMyComputerOpen] = useState(false);
     const [isCmdOpen, setIsCmdOpen] = useState(true);
     const [openPrograms, setOpenPrograms] = useState([]);
+    const [gameWindows, setGameWindows] = useState([]);
     const { bringToFront, getZIndex } = useZIndexManager();
 
     const _openBrowser = () => {
@@ -65,6 +67,17 @@ const Desktop = () => {
     const _openCmd = () => {
         bringToFront("Powershell");
         if (!isCmdOpen) setIsCmdOpen(true);
+    };
+
+    const openGameWindow = (gameSrc, gameTitle) => {
+        const gameId = `game-${Date.now()}`;
+        setGameWindows([...gameWindows, { id: gameId, src: gameSrc, title: gameTitle }]);
+        bringToFront(gameTitle);
+    };
+
+    const closeGameWindow = (gameId, gameTitle) => {
+        setGameWindows(gameWindows.filter(g => g.id !== gameId));
+        unregisterProgram(gameTitle);
     };
 
     const registerProgram = (program) => {
@@ -100,6 +113,7 @@ const Desktop = () => {
                         registerProgram={registerProgram} 
                         unregisterProgram={unregisterProgram}
                         bringToFront={() => bringToFront("Browser")}
+                        openGameWindow={openGameWindow}
                     />
                 </div>
             )}
@@ -123,13 +137,32 @@ const Desktop = () => {
                     style={{ position: 'absolute', zIndex: getZIndex("Powershell") }}
                 >
                     <Cmd 
-                        onClose={() => closeProgram("Poweershell", setIsCmdOpen)} 
+                        onClose={() => closeProgram("Powershell", setIsCmdOpen)} 
                         registerProgram={registerProgram} 
                         unregisterProgram={unregisterProgram}
                         bringToFront={() => bringToFront("Powershell")}
                     />
                 </div>
             )}
+
+            {/* Render all open game windows */}
+            {gameWindows.map(game => (
+                <div
+                    key={game.id}
+                    onMouseDown={() => bringToFront(game.title)}
+                    style={{ position: 'absolute', zIndex: getZIndex(game.title) }}
+                >
+                    <GameWindow 
+                        onClose={() => closeGameWindow(game.id, game.title)} 
+                        registerProgram={registerProgram} 
+                        unregisterProgram={unregisterProgram}
+                        bringToFront={() => bringToFront(game.title)}
+                        gameSrc={game.src}
+                        gameTitle={game.title}
+                    />
+                </div>
+            ))}
+
             <Footer openPrograms={openPrograms} />
         </div>
     );

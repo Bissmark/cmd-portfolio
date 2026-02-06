@@ -16,16 +16,22 @@ const projects = [
         github: 'https://github.com/Bissmark/trello',
         live: 'https://trello-frontend-q3pp.onrender.com/',
     },
+    {
+        name : 'Colony Simulator',
+        github: ''
+    },
     // {
     //     name: 'SnakeRaylib',
     //     github: 'https://github.com/Bissmark/Crypto-Page',
-    //     live: 'https://ceegecrypto.firebaseapp.com/',
     // },
-    // {
-    //     name: 'BulletFun',
-    //     github: 'https://github.com/Bissmark/bulletFun',
-    //     live: 'https://ceegecrypto.firebaseapp.com/',
-    // },
+    {
+        name: 'BulletFun',
+        github: 'https://github.com/Bissmark/bulletFun',
+    },
+    {
+        name: 'Hud Engine (Name will change)',
+        github: 'https://github.com/Bissmark/hudEngine'
+    }
     // {
     //     name: 'To-Do List',
     //     github: 'https://github.com/Bissmark/School-Notes-V2',

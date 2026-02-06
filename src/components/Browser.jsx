@@ -73,8 +73,19 @@ const projectData = {
         tech: "C++, Raylib, CMake",
         img: null,
         icon: "🎮",
-        link: "/bulletFun",
+        link: "https://github.com/Bissmark/bulletFun",
         isGame: true
+    },
+    "project-hudEngine": {
+
+    },
+    "project-colonySimulator": {
+        name: "Colony Simulator",
+        description: "A Rimworld / Kenshi inspired high fantasy colony simulator",
+        tech: 'Unity, C#',
+        img: null,
+        icon: "",
+        link: 'colonySimulator'
     }
 };
 
@@ -93,7 +104,7 @@ const skillsData = [
     { name: "Raylib", icon: null, emoji: "🕹️" },
 ];
 
-const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront }) => {
+const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, openGameWindow }) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
     const [size, setSize] = useState({ width: 900, height: 650 });
     const [position, setPosition] = useState({ x: 80, y: 40 });
@@ -232,21 +243,15 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront }) 
             );
         }
 
-        // Snake game embed
-        if (url === "project-snakeraylib") {
+        // Colony Simulator page
+        if (url === "project-colonySimulator") {
             return (
                 <div className="browser-content">
-                    <h1>🐍 Snake Game</h1>
-                    <p>A classic snake game built using C++ and the Raylib library, compiled to WebAssembly.</p>
-                    <p><strong>Technologies:</strong> C++, Raylib, WebAssembly</p>
+                    <h1>Colony Simulator (Name subject to change)</h1>
+                    <p>A Rimworld and Kenshi Inspired colony simulator</p>
+                    <p><strong>Technologies:</strong> C#, Unity</p>
                     <div style={{ textAlign: "center", margin: "20px 0" }}>
-                        <iframe
-                            src="/snakeraylib/SnakeGame.html"
-                            width="450"
-                            height="350"
-                            style={{ border: "2px solid #c0c0c0", borderRadius: "5px" }}
-                            title="Snake Game"
-                        />
+                        <p style={{ marginBottom: '10px' }}>Colony Simulator demo coming soon!</p>
                     </div>
                 </div>
             );
@@ -258,8 +263,34 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront }) 
                 <div className="browser-content">
                     <h1>🎮 Bullet Fun</h1>
                     <p>A bullet hell style game built using C++ and the Raylib library.</p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/Bissmark/bulletFun" target="_blank" rel="noopener noreferrer" style={{ color: '#0000ee', textDecoration: 'underline', cursor: 'pointer' }}>View Repository</a></p>
                     <p><strong>Technologies:</strong> C++, Raylib, CMake, WebAssembly</p>
                     <div style={{ textAlign: "center", margin: "20px 0" }}>
+                        <button 
+                            onClick={() => openGameWindow && openGameWindow("/bulletFun/BulletFun.html", "Bullet Fun")}
+                            style={{ 
+                                padding: '12px 24px', 
+                                fontSize: '16px',
+                                cursor: 'pointer',
+                                backgroundColor: '#0078d7',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: '4px'
+                            }}
+                        >
+                            🎮 Launch Bullet Fun
+                        </button>
+                    </div>
+                </div>
+            );
+        }
+        if (url === "project-hudEngine") {
+            return (
+                <div className="browser-content">
+                    <h1>Hud Engine (Name subject to change)</h1>
+                    <p>A hobby Game Engine to learn about OpenGL better</p>
+                    <p><strong>Technologies:</strong> C++, OpenGL, CMake, SDL3</p>
+                    {/* <div style={{ textAlign: "center", margin: "20px 0" }}>
                         <iframe
                             src="/bulletFun/BulletFun.html"
                             width="450"
@@ -267,10 +298,11 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront }) 
                             style={{ border: "2px solid #c0c0c0", borderRadius: "5px" }}
                             title="Bullet Fun"
                         />
-                    </div>
+                    </div> */}
                 </div>
             );
         }
+
 
         // Individual project page
         if (projectData[url]) {
@@ -287,6 +319,28 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront }) 
                     )}
                     <p>{project.description}</p>
                     <p><strong>Technologies:</strong> {project.tech}</p>
+                    
+                    {/* Launch button for games */}
+                    {project.isGame && url === "project-snakeraylib" && openGameWindow && (
+                        <div style={{ textAlign: "center", margin: "20px 0" }}>
+                            <button 
+                                onClick={() => openGameWindow("/snakeraylib/index.html", "Snake Game")}
+                                style={{ 
+                                    padding: '12px 24px', 
+                                    fontSize: '16px',
+                                    cursor: 'pointer',
+                                    backgroundColor: '#0078d7',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '4px',
+                                    marginBottom: '15px'
+                                }}
+                            >
+                                🎮 Launch Game
+                            </button>
+                        </div>
+                    )}
+                    
                     <div className="project-links">
                         <a href={project.link} target="_blank" rel="noopener noreferrer">
                             📂 GitHub Repository

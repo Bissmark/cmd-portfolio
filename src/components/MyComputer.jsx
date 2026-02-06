@@ -23,9 +23,9 @@ const ProjectFiles = {
         github: 'https://github.com/Bissmark/trello',
         hosted: 'https://trello-frontend-q3pp.onrender.com/'
     },
-    snakeRaylib: {
-        name: 'SnakeRaylib',
-        github: 'https://github.com/Bissmark/SnakeRaylib',
+    hudEngine: {
+        name: 'Hud Engine (Name will change)',
+        github: 'https://github.com/Bissmark/hudEngine',
         hosted: null
     },
     bulletFun: {
@@ -33,11 +33,16 @@ const ProjectFiles = {
         github: 'https://github.com/Bissmark/bulletFun',
         hosted: null
     },
-    todoApp: {
-        name: 'To-Do List',
-        github: 'https://github.com/Bissmark/School-Notes-V2',
-        hosted: 'https://school-notes-backend.onrender.com/'
+    colonySimulator: {
+        name: 'Colony Simulator',
+        github: '',
+        hosted: null
     }
+    // todoApp: {
+    //     name: 'To-Do List',
+    //     github: 'https://github.com/Bissmark/School-Notes-V2',
+    //     hosted: 'https://school-notes-backend.onrender.com/'
+    // }
 };
 
 const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront }) => {
