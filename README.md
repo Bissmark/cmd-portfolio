@@ -2,6 +2,8 @@
 
 ## Introduction
 
+I advise using a Computer to use the portfolio, not on a mobile device, maybe 1 day I will make this mobile responsive, but its difficult with everything that is included
+
 Welcome to my portfolio. I am interested in programming in Javascript and C++. I wanted to showcase a fun project for my portfolio so I created this Windows 10 inspired project. It has a Start Menu, My Computer, Browser and even a Command Prompt that you can view the projects that I have created in multiple different ways. You can navigate the website just like you would a normal desktop.
 
 ### How to Use
