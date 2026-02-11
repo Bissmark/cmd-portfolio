@@ -27,6 +27,9 @@ const projects = [
     {
         name: 'BulletFun',
         github: 'https://github.com/Bissmark/bulletFun',
+        live: 'game:bulletfun',
+        gameSrc: '/bulletFun/BulletFun.html',
+        gameTitle: 'Bullet Fun',
     },
     {
         name: 'Hud Engine (Name will change)',

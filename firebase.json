@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "christopher-holt-portfolio",
     "public": "dist",
     "ignore": [
       "firebase.json",

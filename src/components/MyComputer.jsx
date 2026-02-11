@@ -31,7 +31,8 @@ const ProjectFiles = {
     bulletFun: {
         name: 'BulletFun',
         github: 'https://github.com/Bissmark/bulletFun',
-        hosted: null
+        hosted: null,
+        gameSrc: '/bulletFun/BulletFun.html'
     },
     colonySimulator: {
         name: 'Colony Simulator',
@@ -45,7 +46,7 @@ const ProjectFiles = {
     // }
 };
 
-const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront }) => {
+const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront, openGameWindow }) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
     const [size, setSize] = useState({ width: 800, height: 600 });
     const [position, setPosition] = useState({ x: 100, y: 50 });
@@ -321,6 +322,17 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront 
                                                 <span className="file-icon" style={{ fontSize: '40px' }}>🌐</span>
                                             )}
                                             <span className="file-name">Live Website</span>
+                                        </div>
+                                    )}
+
+                                    {openedProject.gameSrc && openGameWindow && (
+                                        <div 
+                                            className={`file ${selectedFile === 'launch' ? 'selected' : ''}`}
+                                            onClick={(e) => { e.stopPropagation(); setSelectedFile('launch'); }}
+                                            onDoubleClick={() => openGameWindow(openedProject.gameSrc, openedProject.name)}
+                                        >
+                                            <span className="file-icon" style={{ fontSize: '40px' }}>🎮</span>
+                                            <span className="file-name">Launch Game</span>
                                         </div>
                                     )}
                             </div>

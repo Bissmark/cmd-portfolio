@@ -4,7 +4,7 @@ import "./Browser.css"; // Reuse browser styles, or create GameWindow.css if nee
 
 const GameWindow = ({ onClose, registerProgram, unregisterProgram, bringToFront, gameSrc, gameTitle }) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
-    const [size, setSize] = useState({ width: 500, height: 450 });
+    const [size, setSize] = useState({ width: 1500, height: 1000 });
     const [position, setPosition] = useState({ x: 150, y: 100 });
     const [resizing, setResizing] = useState(false);
     const [resizeDirection, setResizeDirection] = useState(null);
@@ -107,8 +107,9 @@ const GameWindow = ({ onClose, registerProgram, unregisterProgram, bringToFront,
                         src={gameSrc}
                         width="100%"
                         height="100%"
-                        style={{ border: "none" }}
+                        style={{ border: "none", display: "block" }}
                         title={gameTitle}
+                        scrolling="no"
                     />
                 </div>
 

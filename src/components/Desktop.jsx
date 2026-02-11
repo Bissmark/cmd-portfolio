@@ -127,6 +127,7 @@ const Desktop = () => {
                         registerProgram={registerProgram} 
                         unregisterProgram={unregisterProgram}
                         bringToFront={() => bringToFront("My Computer")}
+                        openGameWindow={openGameWindow}
                     />
                 </div>
             )}
@@ -141,6 +142,7 @@ const Desktop = () => {
                         registerProgram={registerProgram} 
                         unregisterProgram={unregisterProgram}
                         bringToFront={() => bringToFront("Powershell")}
+                        openGameWindow={openGameWindow}
                     />
                 </div>
             )}

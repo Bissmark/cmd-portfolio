@@ -3,7 +3,7 @@ import { commands } from '../utilities/commands';
 import Draggable from 'react-draggable';
 import './Cmd.css';
 
-const Cmd = ({ onClose, registerProgram, unregisterProgram, bringToFront }) => {
+const Cmd = ({ onClose, registerProgram, unregisterProgram, bringToFront, openGameWindow }) => {
     const [inputValue, setInputValue] = useState('');
     const [cmdHistory, setCmdHistory] = useState([
         {
@@ -226,14 +226,25 @@ const Cmd = ({ onClose, registerProgram, unregisterProgram, bringToFront }) => {
                                                         <p>{isLast ? '└──' : '├──'} {project.name}</p>
                                                         <p>
                                                             {isLast ? '    ' : '│   '} ├── Live:{' '}
-                                                            <a
-                                                                href={project.live}
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                style={{ color: '#00ff00', textDecoration: 'underline' }}
-                                                            >
-                                                                {project.live}
-                                                            </a>
+                                                            {project.gameSrc && openGameWindow ? (
+                                                                <span
+                                                                    onClick={() => openGameWindow(project.gameSrc, project.gameTitle)}
+                                                                    style={{ color: '#00ff00', textDecoration: 'underline', cursor: 'pointer' }}
+                                                                >
+                                                                    🎮 Launch {project.gameTitle}
+                                                                </span>
+                                                            ) : project.live ? (
+                                                                <a
+                                                                    href={project.live}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    style={{ color: '#00ff00', textDecoration: 'underline' }}
+                                                                >
+                                                                    {project.live}
+                                                                </a>
+                                                            ) : (
+                                                                <span style={{ color: '#666' }}>N/A</span>
+                                                            )}
                                                         </p>
                                                         <p>
                                                             {isLast ? '    ' : '│   '} └── GitHub:{' '}
