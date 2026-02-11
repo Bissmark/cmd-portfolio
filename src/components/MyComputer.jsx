@@ -36,7 +36,7 @@ const ProjectFiles = {
     },
     colonySimulator: {
         name: 'Colony Simulator',
-        github: '',
+        github: 'https://github.com/Bissmark/ColonySimulatorUnity',
         hosted: null
     }
     // todoApp: {

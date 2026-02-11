@@ -262,12 +262,12 @@
 }
 
 .browser-content h1 {
-    flex: 1;
+    /* flex: 1; */
     font-size: 28px;
     font-weight: 600;
     color: #1a1a1a;
     margin: 0 0 16px 0;
-    padding-bottom: 12px;
+    padding-bottom: 24px;
     border-bottom: 2px solid #0078d4;
 }
 

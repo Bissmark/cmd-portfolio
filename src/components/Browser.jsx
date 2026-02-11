@@ -77,7 +77,12 @@ const projectData = {
         isGame: true
     },
     "project-hudEngine": {
-
+        name: "Hud Engine (Name subject to change)",
+        description: "A way for me to learn about about graphics programming and C++ by creating an OpenGL game engine",
+        tech: "C++, OpenGL, SDL3, ImGui",
+        img: null,
+        icon: "",
+        link: "https://github.com/Bissmark/hudEngine"
     },
     "project-colonySimulator": {
         name: "Colony Simulator",
@@ -85,7 +90,7 @@ const projectData = {
         tech: 'Unity, C#',
         img: null,
         icon: "",
-        link: 'colonySimulator'
+        link: 'https://github.com/Bissmark/ColonySimulatorUnity'
     }
 };
 
@@ -244,23 +249,22 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
         }
 
         // Colony Simulator page
-        if (url === "project-colonySimulator") {
-            return (
-                <div className="browser-content">
-                    <h1>Colony Simulator (Name subject to change)</h1>
-                    <p>A Rimworld and Kenshi Inspired colony simulator</p>
-                    <p><strong>Technologies:</strong> C#, Unity</p>
-                    <div style={{ textAlign: "center", margin: "20px 0" }}>
-                        <p style={{ marginBottom: '10px' }}>Colony Simulator demo coming soon!</p>
-                    </div>
-                </div>
-            );
-        }
+        // if (url === "project-colonySimulator") {
+        //     return (
+        //         <div className="browser-content">
+        //             <h1>Colony Simulator (Name subject to change)</h1>
+        //             <p>A Rimworld and Kenshi Inspired colony simulator</p>
+        //             <p><strong>Technologies:</strong> C#, Unity</p>
+        //             <div style={{ textAlign: "center", margin: "20px 0" }}>
+        //                 <p style={{ marginBottom: '10px' }}>Colony Simulator demo coming soon!</p>
+        //             </div>
+        //         </div>
+        //     );
+        // }
         
-        // Bullet fun embed
         if (url === "project-bulletfun") {
             return (
-                <div className="browser-content">
+                <div className="browser-content project-detail">
                     <h1>🎮 Bullet Fun</h1>
                     <p>A bullet hell style game built using C++ and the Raylib library.</p>
                     <p><strong>GitHub:</strong> <a href="https://github.com/Bissmark/bulletFun" target="_blank" rel="noopener noreferrer" style={{ color: '#0000ee', textDecoration: 'underline', cursor: 'pointer' }}>View Repository</a></p>
@@ -284,24 +288,25 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
                 </div>
             );
         }
-        if (url === "project-hudEngine") {
-            return (
-                <div className="browser-content">
-                    <h1>Hud Engine (Name subject to change)</h1>
-                    <p>A hobby Game Engine to learn about OpenGL better</p>
-                    <p><strong>Technologies:</strong> C++, OpenGL, CMake, SDL3</p>
-                    {/* <div style={{ textAlign: "center", margin: "20px 0" }}>
-                        <iframe
-                            src="/bulletFun/BulletFun.html"
-                            width="450"
-                            height="350"
-                            style={{ border: "2px solid #c0c0c0", borderRadius: "5px" }}
-                            title="Bullet Fun"
-                        />
-                    </div> */}
-                </div>
-            );
-        }
+        // if (url === "project-hudEngine") {
+        //     return (
+        //         <div className="browser-content">
+        //             <h1>Hud Engine (Name subject to change)</h1>
+        //             <p>A hobby Game Engine to learn about OpenGL better</p>
+        //             <p><strong>GitHub:</strong> <a href="https://github.com/Bissmark/hudEngine" target="_blank" rel="noopener noreferrer" style={{ color: '#0000ee', textDecoration: 'underline', cursor: 'pointer' }}>View Repository</a></p>
+        //             <p><strong>Technologies:</strong> C++, OpenGL, CMake, SDL3</p>
+        //             {/* <div style={{ textAlign: "center", margin: "20px 0" }}>
+        //                 <iframe
+        //                     src="/bulletFun/BulletFun.html"
+        //                     width="450"
+        //                     height="350"
+        //                     style={{ border: "2px solid #c0c0c0", borderRadius: "5px" }}
+        //                     title="Bullet Fun"
+        //                 />
+        //             </div> */}
+        //         </div>
+        //     );
+        // }
 
 
         // Individual project page
