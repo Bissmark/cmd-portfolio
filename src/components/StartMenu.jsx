@@ -24,7 +24,6 @@ const StartMenu = ({ isVisible, onClose }) => {
         };
     }, [isVisible, onClose]);
 
-    // Reset selection when menu closes
     useEffect(() => {
         if (!isVisible) {
             setSelectedItem(null);
@@ -119,7 +118,6 @@ const StartMenu = ({ isVisible, onClose }) => {
 
     return (
         <div ref={menuRef} className={`start-menu ${isVisible ? 'visible' : 'hidden'}`}>
-            {/* User Profile Header */}
             <div className="start-menu-header">
                 <div className="user-avatar">👨‍💻</div>
                 <span className="user-name">Christopher Holt</span>
@@ -132,12 +130,9 @@ const StartMenu = ({ isVisible, onClose }) => {
                 </button>
             </div>
 
-            {/* Main Content */}
             <div className="start-menu-content">
-                {/* Left Side - Programs (White) */}
                 <div className="start-menu-leftside">
                     <div className="programs-section">
-                        {/* Pinned Programs */}
                         {menuItems.map((item) => (
                             <div
                                 key={item.id}
@@ -156,7 +151,6 @@ const StartMenu = ({ isVisible, onClose }) => {
                         
                         <div className="menu-separator" />
                         
-                        {/* Recent Programs */}
                         <div className="recent-programs">
                             <div className="recent-label">Recently Used</div>
                             <div 
@@ -189,16 +183,13 @@ const StartMenu = ({ isVisible, onClose }) => {
                         </div>
                     </div>
                     
-                    {/* All Programs */}
                     <div className="all-programs">
                         All Programs
                         <span className="all-programs-arrow">▶</span>
                     </div>
                 </div>
 
-                {/* Right Side - Places (Blue) */}
                 <div className="start-menu-rightside">
-                    {/* Detail Panel */}
                     <div className="detail-panel">
                         {getDetailContent()}
                     </div>

@@ -2,8 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import Draggable from "react-draggable";
 import './MyComputer.css';
 
-// UPDATE THESE PATHS to match your project structure, or leave as null to use emojis
-// Example: import ChromeImage from "../assets/images/Chrome.png";
 const ChromeImage = null;  // Set to your image import or null for emoji
 const FolderImage = null;  // Set to your image import or null for emoji
 
@@ -39,11 +37,6 @@ const ProjectFiles = {
         github: 'https://github.com/Bissmark/ColonySimulatorUnity',
         hosted: null
     }
-    // todoApp: {
-    //     name: 'To-Do List',
-    //     github: 'https://github.com/Bissmark/School-Notes-V2',
-    //     hosted: 'https://school-notes-backend.onrender.com/'
-    // }
 };
 
 const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront, openGameWindow }) => {
@@ -114,17 +107,14 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront,
 
     const handleFileClick = (project, e) => {
         if (e.detail === 2) {
-            // Double click - open folder
             setOpenedProject(project);
             setSelectedFile(null);
         } else {
-            // Single click - select
             setSelectedFile(project.name);
         }
     };
 
     const handleContentClick = (e) => {
-        // Clicking empty area deselects
         if (e.target.classList.contains('myComputer-content')) {
             setSelectedFile(null);
         }
@@ -161,7 +151,6 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront,
                 onMouseLeave={handleMouseUp}
                 onClick={() => bringToFront("My Computer")}
             >
-                {/* Title Bar */}
                 <div className="myComputer-header">
                     <span>
                         <span style={{ fontSize: '14px' }}>💻</span>
@@ -176,7 +165,6 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront,
                     </div>
                 </div>
 
-                {/* Menu Bar */}
                 <div className="myComputer-menu-bar">
                     <span className="menu-item">File</span>
                     <span className="menu-item">Edit</span>
@@ -218,7 +206,6 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront,
                     </button>
                 </div>
 
-                {/* Address Bar */}
                 <div className="myComputer-url-bar">
                     <span className="address-label">Address</span>
                     <div className="address-bar-container">
@@ -235,9 +222,7 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront,
                     </button>
                 </div>
 
-                {/* Main Content Area */}
                 <div className="myComputer-main">
-                    {/* Sidebar */}
                     {showSidebar && (
                         <div className="myComputer-sidebar">
                             <div className="sidebar-section">
@@ -292,10 +277,8 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront,
                         </div>
                     )}
 
-                    {/* File Content */}
                     <div className="myComputer-content" onClick={handleContentClick}>
                         {openedProject ? (
-                            // Inside a project folder
                             <div className="folder-view">
                                     <div 
                                         className={`file ${selectedFile === 'github' ? 'selected' : ''}`}
@@ -337,7 +320,6 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront,
                                     )}
                             </div>
                         ) : (
-                            // Project list view
                             <>
                                 <div className="content-section">
                                     <div className="content-section-header">
@@ -370,7 +352,6 @@ const MyComputer = ({ onClose, registerProgram, unregisterProgram, bringToFront,
                     </div>
                 </div>
 
-                {/* Status Bar */}
                 <div className="myComputer-footer">
                     <div className="footer-left">
                         <span className="footer-section">

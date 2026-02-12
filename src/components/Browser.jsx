@@ -2,8 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import Draggable from "react-draggable";
 import "./Browser.css";
 
-// Set these to your image imports or null to use emoji fallbacks
-// Example: import CryptoImage from "../assets/images/Crypto-Image.png";
 const CryptoImage = null;
 const GeoWhereImage = null;
 const TrelloImage = null;
@@ -209,7 +207,6 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
     };
 
     const handleRefresh = () => {
-        // Just re-render
         setUrl(url);
     };
 
@@ -226,7 +223,6 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
     };
 
     const renderContent = () => {
-        // Projects list
         if (url === "projects") {
             return (
                 <div className="browser-content">
@@ -309,7 +305,6 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
         // }
 
 
-        // Individual project page
         if (projectData[url]) {
             const project = projectData[url];
             return (
@@ -325,7 +320,6 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
                     <p>{project.description}</p>
                     <p><strong>Technologies:</strong> {project.tech}</p>
                     
-                    {/* Launch button for games */}
                     {project.isGame && url === "project-snakeraylib" && openGameWindow && (
                         <div style={{ textAlign: "center", margin: "20px 0" }}>
                             <button 
@@ -360,7 +354,6 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
             );
         }
 
-        // Home page
         if (url === "home") {
             return (
                 <div className="browser-content">
@@ -403,7 +396,6 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
             );
         }
 
-        // About page
         if (url === "about") {
             return (
                 <div className="browser-content">
@@ -430,7 +422,6 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
             );
         }
 
-        // Contact page
         if (url === "contact") {
             return (
                 <div className="browser-content-contact">
@@ -450,7 +441,6 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
             );
         }
 
-        // Skills page
         if (url === "skills") {
             return (
                 <div className="browser-content">
@@ -504,7 +494,6 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
                 onMouseLeave={handleMouseUp}
                 onClick={() => bringToFront("Browser")}
             >
-                {/* Title Bar */}
                 <div className="browser-header">
                     <span>
                         <span className="browser-header-icon">🌐</span>
@@ -519,7 +508,6 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
                     </div>
                 </div>
 
-                {/* Menu Bar */}
                 <div className="browser-menu-bar">
                     <span className="menu-item">File</span>
                     <span className="menu-item">Edit</span>
@@ -529,7 +517,6 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
                     <span className="menu-item">Help</span>
                 </div>
 
-                {/* Toolbar */}
                 <div className="browser-toolbar">
                     <button 
                         className="toolbar-btn" 
@@ -572,7 +559,6 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
                     </button>
                 </div>
 
-                {/* Address Bar */}
                 <div className="browser-url-bar">
                     <span className="address-label">Address</span>
                     <div className="address-bar-container">
@@ -591,12 +577,10 @@ const Browser = ({ onClose, registerProgram, unregisterProgram, bringToFront, op
                     <span className="links-label">Links</span>
                 </div>
 
-                {/* Content */}
                 <div className="browser-box">
                     {renderContent()}
                 </div>
 
-                {/* Status Bar */}
                 <div className="browser-footer">
                     <div className="footer-left">
                         <span className="footer-icon">✅</span>

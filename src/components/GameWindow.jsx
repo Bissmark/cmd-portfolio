@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import Draggable from "react-draggable";
-import "./Browser.css"; // Reuse browser styles, or create GameWindow.css if needed
+import "./Browser.css";
 
 const GameWindow = ({ onClose, registerProgram, unregisterProgram, bringToFront, gameSrc, gameTitle }) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
@@ -75,7 +75,6 @@ const GameWindow = ({ onClose, registerProgram, unregisterProgram, bringToFront,
                 onMouseLeave={handleMouseUp}
                 onClick={() => bringToFront(gameTitle)}
             >
-                {/* Title Bar */}
                 <div className="browser-header game-header">
                     <span>
                         <span className="browser-header-icon">🎮</span>
@@ -94,7 +93,6 @@ const GameWindow = ({ onClose, registerProgram, unregisterProgram, bringToFront,
                     </div>
                 </div>
 
-                {/* Game Content */}
                 <div style={{ 
                     width: '100%', 
                     height: 'calc(100% - 30px)', 

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { FaRecycle } from 'react-icons/fa';
 import WindowsStart from '../assets/images/WindowsStart.png';
 import ChromeImage from '../assets/images/Chrome.png';
 import ExplorerIcon from '../assets/images/Explorer.png';

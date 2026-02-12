@@ -147,7 +147,6 @@ const Desktop = () => {
                 </div>
             )}
 
-            {/* Render all open game windows */}
             {gameWindows.map(game => (
                 <div
                     key={game.id}
